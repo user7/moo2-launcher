@@ -9,6 +9,7 @@ cp -r src "$out"
 cp "MOO2 Launcher" "$out"
 cp "MOO2 Launcher.exe" "$out"
 cp misc/INSTALL.TXT "$out"
+cp LICENSE "$out"/src/GPL2.TXT
 cp -r "$moo2_package" "$out"
 echo $ver > "$out/src/VERSION"
 echo $out
