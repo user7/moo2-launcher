@@ -10,7 +10,7 @@ patch supports improved mod format which allows Launcher to detect
 installed mods and present available options to user. Launcher also
 exposes few DOSBox options, in particular network multiplayer is now
 trivial to setup. In launch window right-clicking any mod or option
-brings up a window with its discription.
+brings up its discription.
 
 Launcher package normally includes the latest 1.50 patch package under
 MOO2.1.50.* subdirectory, so you don't need to download it separately.
@@ -25,7 +25,7 @@ Windows XP through 10 are supported, older versions are not.
 
 Launcher is likely to work on any recent GNU/Linux distro, at least
 Ubuntu and Fedora were tested. In fact any Unix-like system with fresh
-enough Tk toolkit should be capable of running Launcher.
+enough Tk toolkit should be capable of running it.
 
 
     3. License
