@@ -8,7 +8,7 @@ mkdir "$out"
 cp -r src "$out"
 cp "MOO2 Launcher" "$out"
 cp "MOO2 Launcher.exe" "$out"
-cp INSTALL.TXT "$out"
+cp misc/INSTALL.TXT "$out"
 cp -r "$moo2_package" "$out"
 echo $ver > "$out/src/VERSION"
 echo $out
