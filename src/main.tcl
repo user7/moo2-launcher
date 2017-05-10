@@ -1267,7 +1267,6 @@ proc create_gui {} {
         }
         menu .m.actions
         .m.actions add command -label [mc m-b-reinstall] -command cmd_create_gui_inst
-        .m add cascade -menu .m.actions -label [mc m-menu-actions]
         .m.actions add command -label [mc m-menu-mods-dir] \
             -command {cmd_inst_open 150 mods}
         .m.actions add command -label [mc m-menu-game-dir] \
@@ -1293,6 +1292,7 @@ proc create_gui {} {
         }
         .m.show add cascade -menu .m.show.main-lua -label [mc m-menu-main-lua]
         .m add cascade -menu .m.show -label [mc m-menu-show]
+        .m add cascade -menu .m.actions -label [mc m-menu-actions]
     }
 
     set cmd [expr {$inst ? "cmd_dist_open" : "cmd_inst_open"}]
