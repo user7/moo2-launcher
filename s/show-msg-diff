@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+for f in src/msgs/*.msg
+do
+    echo $f:
+    cat src/main.tcl | grep -o '\<m-[^ ]*\>' |
+    while read m
+    do
+        if [[ $m == *\$* ]]
+        then
+            continue
+        fi
+        if ! grep -q "$m" "$f"
+        then
+            echo "  "$m
+        fi
+    done
+    echo
+done

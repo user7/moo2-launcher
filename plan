@@ -1,0 +1,97 @@
++ solve /skipintro
++ no extras in help in install mode
++ update about
+    + cleaner text
+    + centered
+
++ remove rgrids
++ start info window near the dialog
++ namespace import ::msgcat::mc
+
+? test coverage
+
+future versions
+    remember geometry for info window
+    global
+    hints using frameless windows
+        check farme removal: wm overrideredirect $t 1
+    check -uniform works across frames
+        or is it -in
+    incrfont as in gitk
+    font measure
+
+    bind combobox entry hover
+    cleaner iscore
+    disabled tick core does not allow Enter, so no help.
+        Need pp click to negate disable.
+
+    folding
+        unicode triangles
+
+    current installation selection
+        list of installations (dct path -> data)
+        display target properties
+            current version
+            x (too verbose) current path
+        when installing confirm downgrade?
+        cancel button should appear in installer if something is already installed
+        more logical install/unistall/switch choice
+            show which location (and version) is current, at least in installer
+            + autoselect current destination
+        nicer installation path selection
+            add currently known path
+
+    use themes
+    editable basic dosbox config
+        check dosbox config overrides previous correctly
+            different configs
+            same configs
+
+    die if in install mode and no package
+        actually live if we have switch
+        not a normal situation anyway
+
+    a way to force locale
+        via env?
+            msgcat::mclocale
+        select language in menu
+
+    shortcuts in menu
+        -underline
+        bind
+
+    unify colors between platforms
+    list -based vertical gridx packer
+        wraplength should not be global
+
+orion2 editor
+    map
+    stars
+        star
+    planets
+        planet
+    colonies
+        colony
+    players
+        player
+    designs
+        design
+    ships
+        ship
+    everything but map automated -- the only possible formulation
+    fleets? no such thing, so questionable
+
+crazies
+    macos: install hackintosh vm, test on it
+        + all path support old mac style
+    drag and drop mod file to install
+    internet self-update
+    intercept keys to use scrolls
+        # package require twapi
+        # ll [twapi::get_os_description]
+    x tooltips with mod descriptions
+        x combobox entry
+        x checkboxes
+        > not built into windows runtime, need to supply package or rebuild runtime
+    theme-dependent highlight color
+    run archiving thread

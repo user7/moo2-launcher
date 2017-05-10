@@ -1,0 +1,14 @@
+#!/bin/bash
+set -e
+moo2_package=$(s/make-moo2-package)
+ver=$(git describe --dirty)
+out="MOOL2.$ver"
+rm -rf MOOL2.*
+mkdir "$out"
+cp -r src "$out"
+cp "MOO2 Launcher" "$out"
+cp "MOO2 Launcher.exe" "$out"
+cp INSTALL.TXT "$out"
+cp -r "$moo2_package" "$out"
+echo $ver > "$out/src/VERSION"
+echo $out

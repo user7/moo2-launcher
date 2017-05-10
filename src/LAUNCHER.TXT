@@ -1,0 +1,48 @@
+
+                          MOO2 Launcher
+
+
+    1. Overview
+
+Launcher is a GUI program for installing, configuring and running
+unofficial fan patch 1.50 for Master of Orion 2. Since 1.50.8 the
+patch supports improved mod format which allows Launcher to detect
+installed mods and present available options to user. Launcher also
+exposes few DOSBox options, in particular network multiplayer is now
+trivial to setup. In launch window right-clicking any mod or option
+brings up a window with its discription.
+
+Launcher package normally includes the latest 1.50 patch package under
+MOO2.1.50.* subdirectory, so you don't need to download it separately.
+
+You MUST OWN a copy of Master of Orion 2, to install or run the patch.
+This package does not contain original game files.
+
+
+    2. System requirements
+
+Windows XP through 10 are supported, older versions are not.
+
+Launcher is likely to work on any recent GNU/Linux distro, at least
+Ubuntu and Fedora were tested. In fact any Unix-like system with fresh
+enough Tk toolkit should be capable of running Launcher.
+
+
+    3. License
+
+This program is free software, you can redistribute and/or modify it
+under the terms of GNU General Public License 2.0 (see GPL2.TXT for
+its full text). Note, that this program is distributed in the hope
+that it will be useful, but WITHOUT ANY WARRANTY, explicit or implied.
+
+All source code is available and can be found under src/ subdirectory.
+
+
+    4. Authors
+
+Copyright (C) 2017 by Alexey Svirchevsky.
+
+Contributors:
+
+Ricardo Ebbenhorst -- graphics, testing, usability suggestions.
+Darza              -- proofreading.

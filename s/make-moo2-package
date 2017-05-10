@@ -1,0 +1,25 @@
+#!/bin/bash
+#
+# This script creates a local moo2 package suitable for launcher tests.
+# It takes moo2 package files from ../moo2/exe/test and ../moo2/150PACK.
+#
+set -e
+base="../moo2"
+pack="$base/150PACK"
+build="$base/exe/test"
+for d in "$pack" "$build"; do
+    if [ ! -d "$d" ]
+    then
+        echo directory $d does not exist
+        exit 1
+    fi
+done
+v="$(grep -a -o 'Version 1\.[-.a-z0-9]*' "$build/ORION2.EXE")"
+v="${v#* }"
+out="MOO2.$v"
+rm -rf MOO2.*
+mkdir "$out"
+cp -r "$pack"/* "$out"
+cp "$build"/ORION2.EXE "$out"/ORION150.EXE
+cp "$build"/EXAMPLE.CFG "$out"/150/docs
+echo $out

@@ -1,0 +1,31 @@
+
+                  MOO2 Launcher and patch 1.50.x
+
+
+MOO2 Launcher is a program that can install, configure and run MOO2
+1.50 patch. You need a working copy of MOO2 1.31+ to install it.
+
+Installation:
+
+1. Unzip package contents to any directory. On MS Windows double click
+   on "MOO2 Launcher.exe". On Linux run terminal, cd to package and
+   run "./MOO2 Launcher". In both cases you will be prompted to
+   install the patch.
+
+2. Choose one of the auto-detected locations (if you have Steam or GOG
+   MOO2 installed) or enter paths manually, press Install.
+
+3. Launcher will switch to normal mode. Select preferred mods and game
+   options and click "Launch!" to run the game. On each successive run
+   Launcher will go directly to normal mode. You can use desktop
+   shortcut created during installation to run it.
+
+Launcher wasn't tested on any Apple OS but Linux instructions might
+work for Mac OS X, so try it. If Launcher does not work on your system
+you can install manually, see MOO2.1.50.x/README_150.TXT for details.
+
+See also:
+
+    - About Launcher itself and its license see src/LAUNCHER.TXT.
+    - For patch overview and changelog see 1.50.x/README_150.TXT.
+    - For the latest version of this package visit www.moo2mod.com.
