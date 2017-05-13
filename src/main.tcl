@@ -130,7 +130,6 @@ proc start {} {
     set ::info_title [mc m-winf-def-title]
     set ::info_desc [mc m-winf-def-desc]
     load_settings
-    find_best_source
     wm title . [mc m-title]
     if {1 || $::tcl_platform(platform) ne "windows"} {
         image create photo app-icon -file [app_path src icon.gif]
@@ -1214,6 +1213,7 @@ proc create_gui {} {
     set ct [dict get $::settings current_target]
     set inst [expr {$::need_inst || $ct eq ""}]
     if {$inst} {
+        find_best_source
         grid [ttk::label .r.inst_prompt \
                   -text [mc m-inst-prompt $::package_version] \
                   -style Big.TLabel {*}$::wl \
