@@ -517,7 +517,11 @@ proc copy_recursive {from to {depth 0}} {
                 copy_recursive $pf $pt [expr $depth + 1]
             } else {
                 # don't overwrite 150/USER.CFG
-                if {$depth == 1 && $f eq "USER.CFG" && [file exists $pt]} { continue }
+                if {[file exists $pt]} {
+                    if {$depth == 1 && $f eq "USER.CFG" } { continue }
+                    if {[string match "BUILD*.CFG" $f] } { continue }
+                    if {[string match "MAIN*.LUA" $f] } { continue }
+                }
                 file copy -force $pf $pt
             }
         }
