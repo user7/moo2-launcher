@@ -8,7 +8,6 @@
 
 ::msgcat::mcflmset {
     m-title             "MOO2 Launcher"
-    m-b-log-open        "Отладка"
     m-b-launch          "Пуск!"
     m-b-launch-help     ""
     m-b-launch-help-desc ""
@@ -82,6 +81,7 @@
     m-about-title       "MOO2 Launcher %s"
     m-about-text        "© 2017 Алексей Свирщевский\n\nПрограмма распространяется на условиях GNU General Public License version 2."
     m-menu-actions      "Сервис"
+    m-menu-gui-log      "Отладка GUI"
     m-menu-irc          "Канал IRC"
     m-menu-web          "Веб-сайт"
     m-menu-show         "Изменить"

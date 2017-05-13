@@ -8,7 +8,6 @@
 
 ::msgcat::mcflmset {
     m-title             "MOO2 Launcher"
-    m-b-log-open        "Debug Log"
     m-b-launch          "Launch!"
     m-b-launch-help     ""
     m-b-launch-help-desc ""
@@ -83,6 +82,7 @@ server -- listen for incoming connections."
     m-about-title       "MOO2 Launcher %s"
     m-about-text        "© 2017 Alexey Svirchevsky\n\nThis program is distributed under the terms of the GNU General Public License version 2."
     m-menu-actions      "Tools"
+    m-menu-gui-log      "Debug GUI"
     m-menu-irc          "IRC Channel"
     m-menu-web          "Website"
     m-menu-show         "Edit"
