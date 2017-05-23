@@ -560,7 +560,7 @@ proc create_shortcut {} {
             }
             set desktop [abs_path [exec xdg-user-dir DESKTOP] \
                              MOO2-1.50.desktop]
-            set main [quote_xdg_exec_argument [app_path "MOO2 Launcher"]]
+            set main [quote_xdg_exec_argument [app_path moo2-launcher]]
             set Exec [quote_xdg_string "tclsh $main"]
             set Icon [quote_xdg_string [app_path src icon.gif]]
             set Path [quote_xdg_string [app_path]]

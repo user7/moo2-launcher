@@ -6,7 +6,7 @@ out="MOOL2.$ver"
 rm -rf MOOL2.*
 mkdir "$out"
 cp -r src "$out"
-cp "MOO2 Launcher" "$out"
+cp moo2-launcher "$out"
 cp "MOO2 Launcher.exe" "$out"
 cp misc/INSTALL.TXT "$out"
 cp LICENSE "$out"/src/GPL2.TXT
