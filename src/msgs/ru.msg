@@ -79,7 +79,7 @@
     m-menu-help-manual  "Руководство к патчу"
     m-menu-help-add     "Дополнение к руководству"
     m-about-title       "MOO2 Launcher %s"
-    m-about-text        "© 2017 Алексей Свирщевский\n\nПрограмма распространяется на условиях GNU General Public License version 2."
+    m-about-text        "© 2017 Алексей Свирщевский\n\nПрограмма распространяется на\nусловиях GNU General Public\nLicense version 2."
     m-menu-actions      "Сервис"
     m-menu-gui-log      "Отладка GUI"
     m-menu-irc          "Канал IRC"

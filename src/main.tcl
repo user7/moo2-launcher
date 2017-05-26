@@ -1158,11 +1158,10 @@ proc bind_escapes w {
 proc cmd_about {} {
     catch {destroy .about}
     toplevel .about
-    set wl [list -wraplength [expr {$::max_text_width * 2 / 3}]]
     ttk::label .about.title -text [mc m-about-title $::version] \
-        -justify center -style Big.TLabel {*}$wl
+        -justify center -style Big.TLabel
     ttk::label .about.text -text [mc m-about-text $::version] \
-        -justify center {*}$wl
+        -justify center
     grid .about.title -sticky ns -padx $::pad2 -pady {20 0}
     grid .about.text -sticky ns -padx $::pad2 -pady {15 20}
     grid rowconfigure .about all -weight 1
