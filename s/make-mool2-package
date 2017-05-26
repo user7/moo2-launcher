@@ -1,15 +1,16 @@
 #!/bin/bash
 set -e
-moo2_package=$(s/make-moo2-package)
-ver=$(git describe --dirty)
-out="MOOL2.$ver"
-rm -rf MOOL2.*
+moo2_pack=$(s/make-moo2-package)
+moo2_ver=${moo2_pack#MOO2.}
+[ "$moo2_ver" != "" ] || (echo no version in package name: $moo2_pack; exit 1)
+out=MOO2-$moo2_ver
+[ -d "$out" ] && rm -rf "$out"
 mkdir "$out"
-cp -r src "$out"
-cp moo2-launcher "$out"
-cp "MOO2 Launcher.exe" "$out"
-cp misc/INSTALL.TXT "$out"
+cp -r src moo2-launcher "MOO2 Launcher.exe" misc/INSTALL.TXT "$moo2_pack" "$out"
 cp LICENSE "$out"/src/GPL2.TXT
-cp -r "$moo2_package" "$out"
-echo $ver > "$out/src/VERSION"
+([ "$1" != "" ] && echo $1 || git describe --dirty) > "$out/src/VERSION"
 echo $out
+zip=$moo2_ver.zip
+[ -f "$zip" ] && rm "$zip"
+zip -qr "$zip" "$out"
+echo "$zip"
