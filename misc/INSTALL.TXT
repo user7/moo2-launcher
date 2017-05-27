@@ -9,8 +9,8 @@ Installation:
 
 1. Unzip package contents to any directory. On MS Windows double click
    on "MOO2 Launcher.exe". On Linux run terminal, cd to package and
-   run "./MOO2 Launcher". In both cases you will be prompted to
-   install the patch.
+   run ./moo2-launcher. In both cases you will be prompted to install
+   the patch.
 
 2. Choose one of the auto-detected locations (if you have Steam or GOG
    MOO2 installed) or enter paths manually, press Install.
