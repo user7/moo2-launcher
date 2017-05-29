@@ -427,8 +427,9 @@ exit
     write_file [norm_path $c 150 ENABLE.CFG] $enable_cfg w
 
     exec [lindex $d 0] -noconsole \
+        -conf $dbc_name \
         -conf [norm_path $c 150 dosbox-base.conf] \
-        -conf $dbc_name &
+        &
 }
 
 # opens files and urls with the appropriate app
