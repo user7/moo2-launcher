@@ -725,14 +725,10 @@ proc control_cur_mod {con {enabled ""} {shown ""} {mclass ""}} {
             upset $shown ""
         }
     } else {
-        if {[set $var]} {
-            upset $enabled ""
-            return [lindex $mlist 0]
-        }
+        if {[set $var]} { upset $enabled [lindex $mlist 0] }
         upset $shown [lindex $mlist 0]
     }
     upset $mclass [dict get $con mclass]
-    return ""
 }
 
 proc update_enables {wi} {
