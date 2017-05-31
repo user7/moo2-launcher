@@ -436,7 +436,11 @@ exit
 proc native_open {f} {
     switch $::tcl_platform(platform) {
         windows {
-            exec {*}[auto_execok start] "" $f &
+            if [string match "*ORION2.LOG" $f] {
+                exec notepad $f &
+            } else {
+                exec {*}[auto_execok start] "" $f &
+            }
         }
         unix {
             exec xdg-open $f &
