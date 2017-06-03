@@ -384,7 +384,14 @@ proc cmd_launch_moo2 {} {
     dict set pars cpu core dynamic
     dict set pars cpu cycles auto
     dict set pars ipx ipx true
-    set dbc_body ""
+    set dbc_body "# DO NOT EDIT!
+#
+# This file is generate automatically by MoO2 Launcher every time it starts
+# the game, so all manual edits are lost. If you want to fine tune dosbox
+# edit 150/dosbox-base.conf instead (overrides this file).
+#
+
+"
     dict for {sec kv} $pars {
         if {$sec eq "aux"} { continue }
         append dbc_body "\n\[$sec\]\n"
@@ -409,7 +416,6 @@ mount C \"$c\"
 C:
 $autoexec_ipx
 ORION150.EXE $switches
-exit
 "
     write_file $dbc_name $dbc_body
 
@@ -424,7 +430,7 @@ exit
         append enable_cfg "enable [quote_conf_string $mod_id];\n"
         ll "enable [quote_conf_string $mod_id]"
     }
-    write_file [norm_path $c 150 ENABLE.CFG] $enable_cfg w
+    write_file [norm_path $c 150 ENABLE.CFG] $enable_cfg
 
     exec [lindex $d 0] -noconsole \
         -conf $dbc_name \
