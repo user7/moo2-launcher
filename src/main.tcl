@@ -94,12 +94,6 @@ proc start {} {
             checkbox 1
             default 0
         } {
-            label m-nosound
-            help  m-nosound-help
-            spath {dosbox mixer nosound}
-            checkbox 1
-            default 0
-        } {
             label m-switches
             help  m-switches-help
             spath {dosbox aux switches}
@@ -380,10 +374,6 @@ proc cmd_launch_moo2 {} {
     save_settings
 
     set pars [dict get $::settings dosbox]
-    dict set pars dosbox memsize 31
-    dict set pars cpu core dynamic
-    dict set pars cpu cycles auto
-    dict set pars ipx ipx true
     set dbc_body "# DO NOT EDIT!
 #
 # This file is generate automatically by MoO2 Launcher every time it starts
