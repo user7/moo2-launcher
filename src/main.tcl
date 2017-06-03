@@ -527,11 +527,12 @@ proc copy_recursive {from to {depth 0}} {
                 if {![file exists $pt]} {file mkdir $pt}
                 copy_recursive $pf $pt [expr $depth + 1]
             } else {
-                # don't overwrite 150/USER.CFG
+                # don't overwrite user files
                 if {[file exists $pt]} {
-                    if {$depth == 1 && $f eq "USER.CFG" } { continue }
-                    if {[string match "BUILD*.CFG" $f] } { continue }
-                    if {[string match "MAIN*.LUA" $f] } { continue }
+                    if {$depth == 1 && $f eq "USER.CFG"} { continue }
+                    if {$f eq "dosbox-base.conf"} { continue }
+                    if [string match "BUILD*.CFG" $f] { continue }
+                    if [string match "MAIN*.LUA" $f] { continue }
                 }
                 file copy -force $pf $pt
             }
