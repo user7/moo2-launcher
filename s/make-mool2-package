@@ -9,6 +9,7 @@ out=MOO2-${moo2_ver}-${la_ver}
 mkdir "$out"
 cp -r src moo2-launcher "MOO2 Launcher.exe" misc/INSTALL.TXT "$moo2_pack" "$out"
 cp LICENSE "$out"/src/GPL2.TXT
+cp misc/dosbox-base.conf "$out/$moo2_pack/150"
 echo $la_ver > "$out/src/VERSION"
 echo $out
 zip=MOO2-${moo2_ver}-$la_ver.zip
