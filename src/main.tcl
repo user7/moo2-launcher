@@ -424,7 +424,7 @@ ORION150.EXE $switches
 
     exec [lindex $d 0] -noconsole \
         -conf $dbc_name \
-        -conf [norm_path $c 150 dosbox-base.conf] \
+        -conf [norm_path $c 150 dosbox.conf] \
         &
 }
 
@@ -520,7 +520,7 @@ proc copy_recursive {from to {depth 0}} {
                 # don't overwrite user files
                 if {[file exists $pt]} {
                     if {$depth == 1 && $f eq "USER.CFG"} { continue }
-                    if {$f eq "dosbox-base.conf"} { continue }
+                    if {$f eq "dosbox.conf"} { continue }
                     if [string match "BUILD*.CFG" $f] { continue }
                     if [string match "MAIN*.LUA" $f] { continue }
                 }
