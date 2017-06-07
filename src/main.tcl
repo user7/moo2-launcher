@@ -11,30 +11,6 @@ proc ll {a} {
     puts "debug: $a"
 }
 
-proc f8 {s} {
-    return [encoding convertfrom utf-8 $s]
-}
-
-proc t8 {s} {
-    return [encoding convertto utf-8 $s]
-}
-
-proc norm_path {args} {
-    set j [file normalize [file join {*}$args]]
-    if {$::tcl_platform(platform) eq "windows"} {
-        return [string map {"/" "\\"} $j]
-    }
-    return $j
-}
-
-proc app_path {args} {
-    return [norm_path $::appdir {*}$args]
-}
-
-proc abs_path {args} {
-    return [norm_path [pwd] {*}$args]
-}
-
 proc start {} {
     package require Tk
     option add *tearOff 0
@@ -137,6 +113,30 @@ proc start {} {
     set ::wl [list -wraplength $::max_text_width]
     wm resizable . false false
     create_gui
+}
+
+proc f8 {s} {
+    return [encoding convertfrom utf-8 $s]
+}
+
+proc t8 {s} {
+    return [encoding convertto utf-8 $s]
+}
+
+proc norm_path {args} {
+    set j [file normalize [file join {*}$args]]
+    if {$::tcl_platform(platform) eq "windows"} {
+        return [string map {"/" "\\"} $j]
+    }
+    return $j
+}
+
+proc app_path {args} {
+    return [norm_path $::appdir {*}$args]
+}
+
+proc abs_path {args} {
+    return [norm_path [pwd] {*}$args]
 }
 
 proc load_settings {} {
