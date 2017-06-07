@@ -138,7 +138,7 @@ proc start {} {
 
 proc load_settings {} {
     set ::system_dosbox ""
-    set ::settings_file MOOL2.settings
+    set ::settings_file [app_path MOOL2.settings]
     set ::detected_targets {}
     if {$::tcl_platform(platform) eq "windows"} {
         package require registry
