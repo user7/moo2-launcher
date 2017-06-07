@@ -1267,8 +1267,6 @@ proc create_gui {} {
             hbind .r.run cmd_help m-b-launch-help
         }
         menu .m.actions
-        .m.actions add command -label [mc m-b-reinstall] \
-            -command cmd_create_gui_inst
         .m.actions add command -label [mc m-menu-mods-dir] \
             -command {cmd_inst_open 150 mods}
         .m.actions add command -label [mc m-menu-game-dir] \
@@ -1277,6 +1275,9 @@ proc create_gui {} {
             -command {cmd_inst_open ORION2.LOG}
         .m.actions add command -label [mc m-menu-gui-log] \
             -command cmd_toggle_log
+        .m.actions add separator
+        .m.actions add command -label [mc m-b-reinstall] \
+            -command cmd_create_gui_inst
         menu .m.show
         .m.show add command -label USER.CFG \
             -command {cmd_inst_open 150 USER.CFG}
