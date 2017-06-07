@@ -1,13 +1,3 @@
-+ solve /skipintro
-+ no extras in help in install mode
-+ update about
-    + cleaner text
-    + centered
-
-+ remove rgrids
-+ start info window near the dialog
-+ namespace import ::msgcat::mc
-
 ? test coverage
 
 future versions
