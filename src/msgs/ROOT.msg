@@ -37,11 +37,12 @@
     m-winf-def-desc     "Move mouse over mod or DOSBox option to see its description. This window can be opened or closed by pressing right mouse button."
     m-output            "Output"
     m-output-help       "Select a mechanism DOSBox uses for drawing graphics. Output affects image quality and ability to scale image. Depending on OS and hardware some outputs may not work."
-
-    m-window-res        "Window size"
-    m-window-res-help   "Select window drawn surface size in pixels. The recommended options are original (640x480) and twice the original (1280x960), but you can specify any other value by editing the field. Has no effect when full screen is on."
-    m-full-screen       "Full screen"
-    m-full-screen-help  "Game takes the whole screen. Use Alt+Enter to switch to windowed mode."
+    m-res        "Resolution"
+    m-res-help   "WxH -- game runs in a window W wide and H high.
+original x2 (or x3) -- enlarge window via scaler.
+full screen 4:3 -- stretch while keeping 4:3.
+full screen hw -- native aspect ratio if monitor set to stretch.
+"
     m-lock-mouse        "Autolock mouse"
     m-lock-mouse-help   "If enabled, mouse will automatically lock when you click on the screen. You'll need to press Ctrl+F10 or Alt+Tab to free cursor. Disabling it makes it possible to switch between windows using mouse only."
     m-switches          "ORION2.EXE switches"

@@ -52,20 +52,12 @@ proc start {} {
             default openglnb
             readonly 1
         } {
-            label m-window-res
-            help  m-window-res-help
-            spath {dosbox sdl windowresolution}
-            options {"640x480" "scaler 2x" "scaler 3x"}
-            default 1280x960
+            label m-res
+            help  m-res-help
+            spath {dosbox aux resolution}
+            options {"640x480" "original x2" "original x3" "full screen 4:3" "full screen hw"}
+            default "original x2"
             suffix res
-        } {
-            label m-full-screen
-            help  m-full-screen-help
-            spath {dosbox sdl fullscreen}
-            checkbox 1
-            default 0
-            suffix fs
-            update update_res
         } {
             label m-lock-mouse
             help  m-lock-mouse-help
@@ -374,35 +366,41 @@ proc cmd_launch_moo2 {} {
     }
     dict set ::settings dosbox aux listen_port $::var_listen_port
     dict set ::settings dosbox aux target_server $::var_target_server
+
     set pars [dict get $::settings dosbox]
-    if [dget $pars {sdl fullscreen} 0] {
-        dict unset pars sdl windowresolution
-    } else {
-        set res [dget $::settings {dosbox sdl windowresolution}]
-        switch -regexp $res {
-            "scaler 3x" {
-                dict unset pars sdl windowresolution
-                dict set pars render scaler "normal3x forced"
+    # may remain in settings from previous version
+    dict unset pars sdl windowresolution
+    dict unset pars sdl fullresolution
+    dict unset pars sdl fullscreen
+    set res [dict get $pars aux resolution]
+    switch -regexp $res {
+        "original x2" {
+            dict set pars render scaler "normal2x forced"
+        }
+        "original x3" {
+            dict set pars render scaler "normal3x forced"
+        }
+        "full screen 4:3" {
+            dict set pars sdl fullscreen true
+            dict set pars sdl fullresolution \
+                [winfo screenwidth .]x[winfo screenheight .]
+        }
+        "full screen hw" {
+            dict set pars sdl fullscreen true
+            dict set pars sdl fullresolution original
+        }
+        "original" {}
+        default {
+            if {![regexp "^(\[0-9\]+)x(\[0-9\]*)\$" $res - x y]} {
+                foreach {x y} {640 480} {}
             }
-            "scaler" {
-                dict unset pars sdl windowresolution
-                dict set pars render scaler "normal2x forced"
-                dict set ::settings dosbox sdl windowresolution "scaler 2x"
-                set ::.r.dosbox_form.res "scaler 2x"
-            }
-            "original" {
-            }
-            default {
-                if [regexp "^(\[0-9\]+)x(\[0-9\]*)\$" $res - x y] {
-                    if {$x <= 0} { set x 640 }
-                    if {$y eq ""} { set y 0 }
-                    if {$x * 3 != $y * 4} { set y [expr {$x * 3 / 4}] }
-                    set res ${x}x$y
-                    dict set ::settings dosbox sdl windowresolution $res
-                    dict set pars sdl windowsresolution $res
-                    set ::.r.dosbox_form.res $res
-                }
-            }
+            if {$x <= 0} { set x 640 }
+            if {$y eq ""} { set y 0 }
+            if {$x * 3 != $y * 4} { set y [expr {$x * 3 / 4}] }
+            set res ${x}x$y
+            dict set ::settings dosbox aux resolution $res
+            dict set pars sdl windowresolution $res
+            set ::.r.dosbox_form.res $res
         }
     }
     save_settings
@@ -830,16 +828,6 @@ proc sget+ {path {def ""}} {
 
 proc mcm {key} {
     if {[string match "m-*" $key]} { return [mc $key] } else { return $key }
-}
-
-proc update_res {} {
-    if {[winfo exists .r.dosbox_form.res] && [winfo exists .r.dosbox_form.fs]} {
-        foreach w [dict get $::gui_dosbox wlist] {
-            if {[dict get $w cwidget] eq ".r.dosbox_form.fs"} { break }
-        }
-        .r.dosbox_form.res configure \
-            -state [expr {[set [dict get $w var]] ? "disabled" : "enabled"}]
-    }
 }
 
 proc cmd_help {args} {
@@ -1370,7 +1358,6 @@ proc create_gui {} {
     grid_pad_all .r $::pad2
     # the banner is special, there is no space between it and dialog
     grid .r.banner -padx 0 -pady [list 0 $::pad2]
-    update_res
 }
 
 proc read_file_maybe {f def} {
