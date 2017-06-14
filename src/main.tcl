@@ -55,8 +55,16 @@ proc start {} {
             label m-res
             help  m-res-help
             spath {dosbox aux resolution}
-            options {"640x480" "original x2" "original x3" "full screen 4:3" "full screen hw"}
-            default "original x2"
+            options {
+                "640x480"
+                "1280x960"
+                "1920x1440"
+                "1280x960 (scaler 2x)"
+                "1920x1440 (scaler 3x)"
+                "full screen 4:3"
+                "full screen hw"
+            }
+            default "1280x960 (scaler 2x)"
             suffix res
         } {
             label m-lock-mouse
@@ -374,10 +382,10 @@ proc cmd_launch_moo2 {} {
     dict unset pars sdl fullscreen
     set res [dict get $pars aux resolution]
     switch -regexp $res {
-        "original x2" {
+        "scaler 2x" {
             dict set pars render scaler "normal2x forced"
         }
-        "original x3" {
+        "scaler 3x" {
             dict set pars render scaler "normal3x forced"
         }
         "full screen 4:3" {

@@ -39,7 +39,7 @@
     m-output-help       "Select a mechanism DOSBox uses for drawing graphics. Output affects image quality and ability to scale image. Depending on OS and hardware some outputs may not work."
     m-res        "Resolution"
     m-res-help   "WxH -- game runs in a window W wide and H high.
-original x2 (or x3) -- enlarge window via scaler.
+scaler 2x or 3x -- enlarge window via scaler.
 full screen 4:3 -- stretch while keeping 4:3.
 full screen hw -- native aspect ratio if monitor set to stretch.
 "
