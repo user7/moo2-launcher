@@ -8,7 +8,7 @@
 
 proc ll {a} {
     append ::log "$a\n"
-    puts "debug: $a"
+    catch {puts "debug: $a"}
 }
 
 proc start {} {
