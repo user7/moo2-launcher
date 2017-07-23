@@ -288,7 +288,7 @@ proc scan_version {path fname} {
         }
         2644842 {
             # 1.40
-            set v [safe_read $f 2063699 7]
+            set v [safe_read $f 2063695 13]
         }
         default {
             if {$fsize <= 2612563} {
@@ -308,6 +308,7 @@ proc scan_version {path fname} {
             }
         }
     }
+    regexp "^(Version |Ver |v|)(1\[^ \0\]*)\[ \0\]*$" $v - - v
     close $f
     if {![string match "1.\[1-9\]*" $v]} {
         set v ?
