@@ -6,7 +6,7 @@
 # terms of the GNU General Public License version 2,
 # see src/LAUNCHER.TXT for details.
 
-::msgcat::mcflmset {
+::msgcat::mcmset "" {
     m-title             "MOO2 Launcher"
     m-b-launch          "Launch!"
     m-b-launch-help     ""

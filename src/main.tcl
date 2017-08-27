@@ -14,7 +14,7 @@ proc ll {a} {
 proc start {} {
     package require Tk
     option add *tearOff 0
-    package require msgcat 1.5
+    package require msgcat
     namespace import ::msgcat::mc
 
     set ::log ""
