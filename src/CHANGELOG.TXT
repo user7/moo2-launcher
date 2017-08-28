@@ -1,0 +1,19 @@
+1.2
+
+    - Scaler based options added to resolution dropdown.
+    - dosbox-base.conf renamed to dosbox.conf.
+    - No overwrite for dosbox.conf when installing (to keep old user settings).
+    - Removed nosound option.
+    - Settings are now stored in application directory.
+    - Correct detection for older patch versions.
+    - Fixed msgcat 1.4 problem on Mac OS X.
+    - Minor fixes and cosmetics.
+
+1.1.1
+
+    - Fixed mod checkboxes not working.
+    - Use notepad instead of system default app to open ORION2.LOG on Windows.
+
+1.1
+
+    - dosbox-base.conf now overrides dosbox-150.conf.
