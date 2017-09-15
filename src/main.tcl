@@ -703,16 +703,6 @@ proc check_enables {mods enabled} {
         }
         dict set mods $e enabled 1
     }
-    dict for {m mdata} $mods {
-        dict set mods $m broken 0
-    }
-    # check brokens among enabled
-    dict for {m mdata} $mods {
-        if {![dict get $mdata enabled]} { continue }
-        if {[dict get $mdata broken]} {
-            error "Enabled mod '$m' is marked as broken."
-        }
-    }
     set ord_cur -1
     while {1} {
         set best_ord ""
@@ -790,10 +780,10 @@ proc update_enables {wi} {
     }
     if {$e ne [dict get $::enable_gui enabled]} {
         dict set ::enable_gui enabled $e
-        catch { destroy .modf.enable_mods_label }
+        catch { destroy .r.modf.enable_mods_label }
         if {[catch {check_enables [dict get $::enable_gui mods] $e} err]} {
             set ::enable_mods_label [f8 $err]
-            grid [ttk::label .modf.enable_mods_label \
+            grid [ttk::label .r.modf.enable_mods_label \
                       -textvariable ::enable_mods_label -foreground red] \
                 -columnspan 2 {*}[padn $::pad1 1 0]
         }
@@ -1437,7 +1427,6 @@ proc bmatch {s bytes} {
 #   lang    -- current language id
 # fname     -- file name relative to root
 # opt       -- if 1, the file is optional, so no error when doesn't exist
-# enable    -- list of enables found
 proc parse_conf {ctx fname opt} {
     set line 0
     foreach p [dict get $ctx stack] {
@@ -1655,16 +1644,12 @@ proc get_mods {root conf_file} {
                 || [dict get $ctxm conf mod_name] eq ""} {
                 dict set ctxm conf mod_name $id
             }
-            set broken 0
             if {[dict exists $mods $id]} {
-                lappend warns "Files $f and [dict get $ctxm file] both have mod_id=$id, ignoring both."
-                dict set mods $id broken 1
-                set broken 1
+                error "ID clash, mod_id=$id is used twice, in files $f and [dict get $mods $id file]."
             }
             dict set mods $id [dict create \
                 conf [dict get $ctxm conf] \
                 file $f \
-                broken $broken \
                 enabled 0 \
                 file_enable [dget $ctxm file_enable] \
             ]
