@@ -45,8 +45,8 @@ full screen hw -- native aspect ratio if monitor set to stretch.
 "
     m-lock-mouse        "Autolock mouse"
     m-lock-mouse-help   "If enabled, mouse will automatically lock when you click on the screen. You'll need to press Ctrl+F10 or Alt+Tab to free cursor. Disabling it makes it possible to switch between windows using mouse only."
-    m-switches          "ORION2.EXE switches"
-    m-switches-help     "Use /skipintro to skip the movie. Other switches are rarely needed."
+    m-switches          "Switches"
+    m-switches-help     "Command line switches passed to game executable. Use /skipintro to skip the movie."
     m-network           "Network"
     m-network-help      "local game -- disable networking.
 client -- connect to remote server.
