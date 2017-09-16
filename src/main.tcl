@@ -61,8 +61,7 @@ proc start {} {
                 "1920x1440"
                 "1280x960 (scaler 2x)"
                 "1920x1440 (scaler 3x)"
-                "full screen 4:3"
-                "full screen hw"
+                "full screen"
             }
             default "1280x960 (scaler 2x)"
             suffix res
@@ -389,12 +388,7 @@ proc cmd_launch_moo2 {} {
         "scaler 3x" {
             dict set pars render scaler "normal3x forced"
         }
-        "full screen 4:3" {
-            dict set pars sdl fullscreen true
-            dict set pars sdl fullresolution \
-                [winfo screenwidth .]x[winfo screenheight .]
-        }
-        "full screen hw" {
+        "full screen" {
             dict set pars sdl fullscreen true
             dict set pars sdl fullresolution original
         }
