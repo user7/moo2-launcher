@@ -58,8 +58,8 @@ proc start {} {
             options {
                 "640x480"
                 "1280x960"
-                "1920x1440"
                 "1280x960 (scaler 2x)"
+                "1920x1440"
                 "1920x1440 (scaler 3x)"
                 "full screen"
             }
