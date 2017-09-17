@@ -39,9 +39,8 @@
     m-output-help       "Select a mechanism DOSBox uses for drawing graphics. Output affects image quality and ability to scale image. Depending on OS and hardware some outputs may not work."
     m-res        "Resolution"
     m-res-help   "WxH -- game runs in a window W wide and H high.
-scaler 2x or 3x -- enlarge window via scaler.
-full screen 4:3 -- stretch while keeping 4:3.
-full screen hw -- native aspect ratio if monitor set to stretch.
+WxH (scaler 2x or 3x) -- same, but use dosbox scaler.
+full screen -- run dosbox in full screen mode.
 "
     m-lock-mouse        "Autolock mouse"
     m-lock-mouse-help   "If enabled, mouse will automatically lock when you click on the screen. You'll need to press Ctrl+F10 or Alt+Tab to free cursor. Disabling it makes it possible to switch between windows using mouse only."
