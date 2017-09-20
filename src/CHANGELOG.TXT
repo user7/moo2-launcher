@@ -1,12 +1,14 @@
+MOO2 Launcher changelog.
+
 1.2
 
     - Scaler based options added to resolution dropdown.
     - Full screen in now an option in resolution dropdown.
     - dosbox-base.conf renamed to dosbox.conf.
-    - No overwrite for dosbox.conf when installing (to keep old user settings).
+    - dosbox.conf is no longer overwritten during installation.
     - Removed nosound option.
     - Settings are now stored in application directory.
-    - Correct detection for older patch versions.
+    - Correct detection for pre-1.50.5 patch versions.
     - Fixed msgcat 1.4 problem on Mac OS X.
     - Minor fixes and cosmetics.
 
