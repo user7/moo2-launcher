@@ -1,5 +1,5 @@
 REM
-REM This batch file creates MOOL2-win32.exe, a windows bootstrap executable
+REM This batch file creates MOO2 Launcher.exe, a windows bootstrap executable
 REM which contains tcl runtime. The actual code is sourced from src/main.tcl,
 REM so this executable can not be used without files from src/.
 REM

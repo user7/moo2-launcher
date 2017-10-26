@@ -29,4 +29,4 @@ See also:
     - About Launcher itself and its license see src/LAUNCHER.TXT
     - For patch overview and changelog see 1.50.x/README_150.TXT
     - For the latest version of this package visit www.moo2mod.com
-    - Launcher repository is at https://github.com/user7/MOOL2
+    - Launcher repository is at https://github.com/user7/moo2-launcher
