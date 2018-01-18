@@ -181,11 +181,20 @@ proc load_settings {} {
         set moos {}
         catch {set moos [lsort -ascii \
                              [glob -dir $path "Master of Orion 2*"]]}
+        set moos [lmap p $moos { if {![file isdirectory $p]} continue; set p }]
+        set nmoo 1
         foreach p $moos {
-            if {[file isdirectory $p]} {
-                lappend dt [dict create moo2-dir [abs_path $p data] \
-                                dosbox.exe [abs_path $p dosbox dosbox]]
+            if {[llength $moos] > 1} {
+                set tag "GOG#$nmoo"
+                incr nmoo
+            } else {
+                set tag "GOG"
             }
+            lappend dt [dict create \
+                moo2-dir [abs_path $p data] \
+                dosbox.exe [abs_path $p dosbox dosbox] \
+                tag $tag
+            ]
         }
         catch {set ::system_dosbox [exec which dosbox]}
     }
