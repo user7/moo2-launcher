@@ -214,9 +214,11 @@ proc load_settings {} {
 }
 
 proc save_settings {} {
-    set f [open $::settings_file "wb"]
-    puts $f [t8 [list set ::settings $::settings]]
-    close $f
+    catch {
+        set f [open $::settings_file "wb"]
+        puts $f [t8 [list set ::settings $::settings]]
+        close $f
+    }
 }
 
 proc find_best_source {} {
@@ -630,20 +632,33 @@ proc cmd_install {} {
         tk_messageBox -title [mc m-inst-err-title] -icon warning -message $err
         return
     }
-    if {[catch {copy_recursive $::package_dir $::gpath} err]} {
+    set package_inst_dir [abs_path $::gpath 150 launcher]
+    if {[catch {
+            copy_recursive $::package_dir $::gpath
+            if {$package_inst_dir ne $::appdir} {
+                file delete -force $package_inst_dir
+                file mkdir $package_inst_dir
+                copy_recursive $::appdir $package_inst_dir
+            }
+    } err]} {
         tk_messageBox -title [mc m-inst-err-title] -icon warning \
             -message [mc m-inst-copy-failed $err]
         return
+    }
+    dict set ::settings targets $::gpath [list $::dpath]
+    dict set ::settings current_target $::gpath
+    set ::need_inst 0
+    save_settings
+    if {$package_inst_dir ne $::appdir} {
+        set ::appdir $package_inst_dir
+        set ::settings_file [app_path MOOL2.settings]
+        save_settings
     }
     if {$::mklinks} {
         if {[catch {create_shortcut} err]} {
             ll "failed to create shortcut: $err"
         }
     }
-    dict set ::settings targets $::gpath [list $::dpath]
-    dict set ::settings current_target $::gpath
-    set ::need_inst 0
-    save_settings
     tk_messageBox -title [mc m-inst-ok-title] \
         -message [mc m-inst-ok-ver-path $::package_version $::gpath]
     create_gui
