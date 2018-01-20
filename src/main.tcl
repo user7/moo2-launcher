@@ -138,10 +138,29 @@ proc abs_path {args} {
     return [norm_path [pwd] {*}$args]
 }
 
+proc detect_game_glob {base_path pattern game_sub dosbox_sub tag} {
+    if [catch {set files [lsort -ascii [glob -dir $base_path $pattern]]}] {
+        return {}
+    }
+    set found {}
+    foreach f $files {
+        set gpath [abs_path $f {*}$game_sub]
+        set dpath [abs_path $f {*}$dosbox_sub]
+        if {[file isdirectory $gpath] && [file isfile $dpath]} {
+            lappend found [dict create \
+                moo2-dir $gpath \
+                dosbox.exe $dpath \
+                tag $tag
+            ]
+        }
+    }
+    return $found
+}
+
 proc load_settings {} {
     set ::system_dosbox ""
     set ::settings_file [app_path MOOL2.settings]
-    set ::detected_targets {}
+    set dt {}
     if {$::tcl_platform(platform) eq "windows"} {
         package require registry
         foreach f {
@@ -153,7 +172,6 @@ proc load_settings {} {
                 break
             }
         }
-        set dt {}
         foreach {tag bits path val} {
             Steam -64bit
                 {HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Steam App 410980}
@@ -175,36 +193,66 @@ proc load_settings {} {
             }
         }
     } else {
-        # both unix and macos
-        set dt {}
-        set path [file join $::env(HOME) "GOG Games"]
-        set moos {}
-        catch {set moos [lsort -ascii \
-                             [glob -dir $path "Master of Orion 2*"]]}
-        set moos [lmap p $moos { if {![file isdirectory $p]} continue; set p }]
-        set nmoo 1
-        foreach p $moos {
-            if {[llength $moos] > 1} {
-                set tag "GOG#$nmoo"
-                incr nmoo
-            } else {
-                set tag "GOG"
-            }
-            lappend dt [dict create \
-                moo2-dir [abs_path $p data] \
-                dosbox.exe [abs_path $p dosbox dosbox] \
-                tag $tag
-            ]
-        }
+        # else unix or macos
+
         catch {set ::system_dosbox [exec which dosbox]}
+
+        # gog linux
+        lappend dt {*}[detect_game_glob \
+            "$::env(HOME)/GOG Games" "Master of Orion 2*" \
+            {data} \
+            {dosbox dosbox} GOG]
+
+        # steam default library
+        set libs [list - - "$::env(HOME)/.local/share/Steam"]
+
+        # steam extra libraries on linux
+        set vdf [read_file_maybe \
+                 "$::env(HOME)/.local/share/Steam/steamapps/libraryfolders.vdf" \
+                 ""]
+        lappend libs {*}[regexp -inline -all -lineanchor \
+                                            {^\t*"([0-9]+)"\t*"([^\n]*?)"$} $vdf]
+        foreach {np n p} $libs {
+            lappend dt {*}[detect_game_glob \
+                            "$p/steamapps/common/Master of Orion 2" . \
+                            {data} {dosbox dosbox} Steam]
+        }
+
+        # gog on snow leopard
+        lappend dt {*}[detect_game_glob \
+                        "/Applications/Master Of Orion 2.app/Contents/Resources/game/Master Of Orion 2.app/Contents" . \
+                        {Resources "Master Of Orion 2.boxer" C.harddisk} \
+                        {MacOS "Boxer Standalone"} GOG]
+
+        # steam on tiger
+        lappend dt {*}[detect_game_glob \
+                        "$::env(HOME)/Library/Application Support/Steam/steamapps/common/Master of Orion 2/Master Of Orion 2.app/Contents" . \
+                        {Resources "Master Of Orion 2.boxer" C.harddisk} \
+                        {MacOS "Boxer Standalone"} Steam]
     }
     if {$dt ne ""} {
         lappend dt [dict create \
                         label m-l-custom \
                         moo2-dir "" \
-                        dosbox.exe $::system_dosbox]
+                        dosbox.exe $::system_dosbox \
+                        tag ""]
     }
-    set ::detected_targets $dt
+
+    # enumerating duplicate tags e.g. GOG becomes GOG #1, GOG #2, etc
+    set tag_counts [dict create]
+    foreach t $dt { dict incr tag_counts [dict get $t tag] }
+    set tc2 [dict create]
+    set dt2 {}
+    foreach t $dt {
+        set tag [dict get $t tag]
+        if {[dict get $tag_counts $tag] >= 2} {
+            set tag "$tag #[lindex [dict incr tc2 $tag] 1]"
+        }
+        dict set t tag $tag
+        lappend dt2 $t
+    }
+
+    set ::detected_targets $dt2
     set ::settings {}
     eval [f8 [read_file_maybe $::settings_file [dict create]]]
     foreach {path def var} {
@@ -554,28 +602,6 @@ proc cmd_check_path {v} {
     }
 }
 
-proc copy_recursive {from to {depth 0}} {
-    if {![catch {set files [lsort -ascii [glob -tails -dir $from *]]}]} {
-        foreach f $files {
-            set pf [norm_path $from $f]
-            set pt [norm_path $to $f]
-            if {[file isdir $pf]} {
-                if {[file exists $pt] && ![file isdir $pt]} { file delete $pt }
-                if {![file exists $pt]} {file mkdir $pt}
-                copy_recursive $pf $pt [expr $depth + 1]
-            } else {
-                # don't overwrite user files
-                if {[file exists $pt]} {
-                    if {$f eq "dosbox.conf"} { continue }
-                    if [string match "BUILD*.CFG" $f] { continue }
-                    if [string match "MAIN*.LUA" $f] { continue }
-                }
-                file copy -force $pf $pt
-            }
-        }
-    }
-}
-
 proc quote_xdg_string {s} {
     # quote \ \n \r
     return [string map { \\ \\\\ "\n" \\n "\r" \\r } $s]
@@ -641,27 +667,36 @@ proc cmd_install {} {
         tk_messageBox -title [mc m-inst-err-title] -icon warning -message $err
         return
     }
-    set package_inst_dir [abs_path $::gpath 150 launcher]
-    if {[catch {
-            copy_recursive $::package_dir $::gpath
-            if {$package_inst_dir ne $::appdir} {
-                file delete -force $package_inst_dir
-                file mkdir $package_inst_dir
-                copy_recursive $::appdir $package_inst_dir
-            }
-    } err]} {
+
+    set dst [abs_path $::gpath]
+    set dstsub "$dst/150"
+    set dst2 "$dst/150/launcher"
+    set src [abs_path $::package_dir]
+    set src2 [abs_path $::appdir]
+    if [catch {
+        if [file exists $dstsub] { file delete -force $dstsub }
+        file copy -force {*}[glob -join -dir $src *] $dst
+        if {$src2 ne $dst2} {
+            file delete -force $dst2
+            file copy -force $src2 $dst2
+        }
+    } err] {
         tk_messageBox -title [mc m-inst-err-title] -icon warning \
-            -message [mc m-inst-copy-failed $err]
+                                        -message [mc m-inst-copy-failed $err]
+        create_gui
         return
     }
-    dict set ::settings targets $::gpath [list $::dpath]
-    dict set ::settings current_target $::gpath
+
+    dict set ::settings targets $dst [list $::dpath]
+    dict set ::settings current_target $dst
     set ::need_inst 0
-    save_settings
-    if {$package_inst_dir ne $::appdir} {
-        set ::appdir $package_inst_dir
-        set ::settings_file [app_path MOOL2.settings]
+    catch {
         save_settings
+        if {$dst2 ne $src2} {
+            set ::appdir $dst2
+            set ::settings_file [app_path MOOL2.settings]
+            save_settings
+        }
     }
     if {$::mklinks} {
         if {[catch {create_shortcut} err]} {
@@ -669,7 +704,7 @@ proc cmd_install {} {
         }
     }
     tk_messageBox -title [mc m-inst-ok-title] \
-        -message [mc m-inst-ok-ver-path $::package_version $::gpath]
+                        -message [mc m-inst-ok-ver-path $::package_version $dst]
     create_gui
 }
 
@@ -1243,7 +1278,7 @@ proc make_inst_frame {} {
     set f [ttk::labelframe .r.if -text [mc m-select-moo2-inst]]
     set row 0
     foreach t $::detected_targets {
-        set label [dict get $t moo2-dir]
+        set label [dict get $t tag]
         if {[dict exists $t label]} {
             set label [mc [dict get $t label]]
         }
@@ -1681,4 +1716,4 @@ proc get_mods {root conf_file} {
                 main_enable [dget $ctx file_enable]]
 }
 
-if {![info exists test]} { start }
+start
