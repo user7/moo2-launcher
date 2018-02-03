@@ -635,20 +635,26 @@ proc create_shortcut {} {
         }
         default {
             # unix
-            set script_path ""
-            foreach c [split [app_path src main.tcl] "" ] {
-                if {[regexp "\[\"'\\><~|&;\$*?#()` \t\n\]" $c]} {
-                    append script_path "\\"
+            if [catch {set desktop [exec xdg-user-dir DESKTOP]}] {
+                # mac os or some wild linux
+                set link "$::env(HOME)/Desktop/moo2 launcher"
+                write_file $link "tclsh \"[regsub -all "\[\"\\\$\]" \
+                                            [app_path src main.tcl] "\\\\&"]\"&"
+
+            } else {
+                set link [abs_path $desktop MOO2-1.50.desktop]
+                set script_path ""
+                foreach c [split [app_path src main.tcl] "" ] {
+                    if {[regexp "\[\"'\\><~|&;\$*?#()` \t\n\]" $c]} {
+                        append script_path "\\"
+                    }
+                    append script_path $c
                 }
-                append script_path $c
-            }
-            set desktop [abs_path [exec xdg-user-dir DESKTOP] \
-                             MOO2-1.50.desktop]
-            set main [quote_xdg_exec_argument [app_path moo2-launcher]]
-            set Exec [quote_xdg_string "tclsh $main"]
-            set Icon [quote_xdg_string [app_path src icon.gif]]
-            set Path [quote_xdg_string [app_path]]
-            write_file $desktop "\[Desktop Entry\]
+                set main [quote_xdg_exec_argument [app_path moo2-launcher]]
+                set Exec [quote_xdg_string "tclsh $main"]
+                set Icon [quote_xdg_string [app_path src icon.gif]]
+                set Path [quote_xdg_string [app_path]]
+                write_file $link "\[Desktop Entry\]
 Encoding=UTF-8
 Type=Application
 Name=MOO2 $::package_version
@@ -658,8 +664,8 @@ Exec=$Exec
 Categories=Game;
 Icon=$Icon
 Path=$Path
-"
-            exec chmod +x $desktop
+"           }
+            if [info exists link] { file attributes $link -permissions +x }
         }
     }
 }
