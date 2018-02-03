@@ -1360,7 +1360,7 @@ proc create_gui {} {
                 }
                 incr i
             }
-        } else {
+        } elseif {$::detected_targets ne ""} {
             .r.if.0 invoke
         }
         cmd_check_path dpath
