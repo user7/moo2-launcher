@@ -1258,8 +1258,6 @@ proc update_gui_by_enables {en} {
 }
 
 proc bind_escapes w {
-    bind $w <Button-1> [list destroy $w]
-    bind $w <Button-3> [list destroy $w]
     bind $w <Escape> [list destroy $w]
 }
 
