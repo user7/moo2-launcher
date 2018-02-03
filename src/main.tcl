@@ -1444,6 +1444,7 @@ proc create_gui {} {
     grid_pad_all .r $::pad2
     # the banner is special, there is no space between it and dialog
     grid .r.banner -padx 0 -pady [list 0 $::pad2]
+    update
 }
 
 proc read_file_maybe {f def} {
