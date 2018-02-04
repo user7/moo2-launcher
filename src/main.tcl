@@ -636,11 +636,32 @@ proc create_shortcut {} {
         default {
             # unix
             if [catch {set desktop [exec xdg-user-dir DESKTOP]}] {
-                # mac os or some wild linux
-                set link "$::env(HOME)/Desktop/moo2 launcher"
-                write_file $link "tclsh \"[regsub -all "\[\"\\\$\]" \
-                                            [app_path src main.tcl] "\\\\&"]\"&"
-
+                set qmool2 "\"[regsub -all "\[\"\\\$\]" \
+                                            [app_path moo2-launcher] "\\\\&"]\""
+                if {$::tcl_platform(os) eq "Linux"} {
+                    # wild flavor of linux
+                    set link "$::env(HOME)/Desktop/moo2 launcher"
+                    write_file $link "$qmool2 &"
+                } else {
+                    # mac os
+                    set app "$::env(HOME)/Desktop/MOO2.app/Contents"
+                    if [file exists $app] { file delete -force $app }
+                    file mkdir "$app/Resources" "$app/MacOS"
+                    write_file "$app/MacOS/s" "#!/usr/bin/env bash\n$qmool2\n"
+                    file attributes "$app/MacOS/s" -permissions u+x
+                    file copy [app_path src icon.icns] "$app/Resources/i.icns"
+                    write_file "$app/Info.plist" {
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleExecutable</key>
+	<string>s</string>
+	<key>CFBundleIconFile</key>
+	<string>i</string>
+</dict>
+</plist>}
+                }
             } else {
                 set link [abs_path $desktop MOO2-1.50.desktop]
                 set script_path ""
