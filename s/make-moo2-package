@@ -2,11 +2,11 @@
 #
 # This script creates a local moo2 package suitable for launcher tests.
 # It takes moo2 package files from ../moo2/exe/test and ../moo2/150PACK.
-#
+
 set -e
-base="../moo2"
-pack="$base/150PACK"
-build="$base/exe/test"
+base=../moo2-patch
+pack=${1:-$base/150PACK}
+build=${2:-$base/output/test}
 for d in "$pack" "$build"; do
     if [ ! -d "$d" ]
     then
