@@ -7,22 +7,25 @@ MOO2 Launcher is a program that can install, configure and run MOO2
 
 Installation:
 
-1. Unzip package contents to any directory. On MS Windows double click
-   on "MOO2 Launcher.exe". On Linux run terminal, cd to package and
-   run ./moo2-launcher. In both cases you will be prompted to install
-   the patch.
+Note that installation doesn't damage your distribution, the 1.50 executable is
+installed alongside the old one. To run your old version (e.g. GOG) use your
+old shortcut and to run 1.50 use the Launcher.
 
-2. Choose one of the auto-detected locations (if you have Steam or GOG
-   MOO2 installed) or enter paths manually, press Install.
+1. Unzip package anywhere. On Windows run MOO2 Launcher.exe. On Linux open a
+   terminal inside unzipped directory and run ./moo2-launcher. On Mac OS X
+   right click moo2-launcher and choose open.
 
-3. Launcher will switch to normal mode. Select preferred mods and game
-   options and click "Launch!" to run the game. On each successive run
-   Launcher will go directly to normal mode. You can use desktop
-   shortcut created during installation to run it.
+2. You will be presented with patch installation prompt: Specify MOO2 and
+   DOSBox locations and press Install (On Mac you need to locate and specify
+   path to "Boxer Standalone" binary instead of DOSBox). For Steam and GOG
+   distros, Launcher should be able to detect all locations automatically.
 
-Launcher wasn't tested on any Apple OS but Linux instructions might
-work for Mac OS X, so try it. If Launcher does not work on your system
-you can install manually, see MOO2.1.50.x/README_150.TXT for details.
+3. After reporting success the Launcher will switch to normal mode, where you
+   can run the game. Press Launch! and check the version number in the bottom
+   right corner on the Title screen to confirm that you are running 1.50.
+
+If Launcher does not work on your system you can install manually, see
+MOO2.1.50.x/README_150.TXT for details.
 
 See also:
 
