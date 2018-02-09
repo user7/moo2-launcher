@@ -32,7 +32,7 @@
     m-mklinks           "Create desktop shortcut"
     m-b-install         "Install"
     m-run-broken        "Patch files are damaged, file %s is missing or has unknown version. Use Tools->Reinstall to repair."
-    m-run-prompt        "Launch MOO2 %s"
+    m-run-prompt        "MOO2 %s"
     m-winf-def-title    "Hints Window"
     m-winf-def-desc     "Move mouse over mod or DOSBox option to see its description. This window can be opened or closed by pressing right mouse button."
     m-output            "Output"
