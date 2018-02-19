@@ -21,12 +21,9 @@ This package does not contain original game files.
 
     2. System requirements
 
-Windows XP through 10 are supported, older versions are not.
-
-Launcher is likely to work on any recent GNU/Linux distro, at least
-Ubuntu and Fedora were tested. In fact any Unix-like system with fresh
-enough Tk toolkit should be capable of running it.
-
+Launcher works on Windows (XP through 10), GNU/Linux (tested on
+Fedora, Ubuntu and Debian), Mac OS X. Other Unix-like systems with
+recent enough Tk should be capable of running it.
 
     3. License
 
