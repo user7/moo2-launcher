@@ -1449,8 +1449,6 @@ proc create_gui {} {
     .m.help add command -label "EXAMPLE.CFG" \
         -command [list $cmd 150 docs EXAMPLE.CFG]
     .m.help add separator
-    .m.help add command -label [mc m-menu-irc] \
-        -command {native_open http://webchat.quakenet.org/?channels=moo2}
     .m.help add command -label [mc m-menu-web] \
         -command {native_open http://www.moo2mod.com}
     .m.help add separator
