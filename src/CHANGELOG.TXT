@@ -1,5 +1,12 @@
 MOO2 Launcher changelog.
 
+1.3
+
+    - Installation & distribution detection now works on Mac OS X.
+    - Improved distribution detection on Linux.
+    - No need to preserve unzipped package, installation copies all files.
+    - Miscellaneous interface updates.
+
 1.2
 
     - Scaler based options added to resolution dropdown.
