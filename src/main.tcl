@@ -114,6 +114,14 @@ proc start {} {
     create_gui
 }
 
+proc col_width_label {} {
+    return { -width 20 -wraplength 123 }
+}
+
+proc col_width_data {} {
+    return { }
+}
+
 proc f8 {s} {
     return [encoding convertfrom utf-8 $s]
 }
@@ -1008,7 +1016,7 @@ proc create_dosbox_frame {frame_info} {
     set row 0
     foreach w [dict get $frame_info wlist] {
         set lwi [dict get $w lwidget]
-        ttk::label $lwi -text [mc [dict get $w label]]
+        ttk::label $lwi -text [mc [dict get $w label]] {*}[col_width_label]
         set wi [dict get $w cwidget]
         set wvar [dict get $w var]
         set sval [sget+ [dict get $w spath] [mcm [dget $w {default} ""]]]
@@ -1020,18 +1028,19 @@ proc create_dosbox_frame {frame_info} {
             foreach o [dict get $w options] { lappend opts [mcm $o] }
             set rd {}
             if {[dict exists $w readonly]} { set rd {-state readonly} }
-            ttk::combobox $wi -values $opts -textvariable $wvar {*}$rd
+            ttk::combobox $wi -values $opts -textvariable $wvar {*}$rd \
+                          {*}[col_width_data]
             if {$rd ne "" && [lsearch $opts $sval] == -1} { $wi current 0 }
             if {$up ne ""} { bind $wi <<ComboboxSelected>> $up }
         } elseif {[dict exists $w checkbox]} {
             # checkbox
             set cmd {}
             if {$up ne ""} { set cmd [list -command $up] }
-            ttk::checkbutton $wi -variable $wvar {*}$cmd
+            ttk::checkbutton $wi -variable $wvar {*}$cmd {*}[col_width_data]
             bind $wi <FocusIn> +[list focus .]
         } else {
             # entry
-            ttk::entry $wi -textvariable $wvar
+            ttk::entry $wi -textvariable $wvar {*}[col_width_data]
             set $wvar [sget+ [dict get $w spath] [dget $w {default} ""]]
         }
         hbind [list $lwi $wi] cmd_help dosbox $row
@@ -1114,11 +1123,12 @@ proc add_labeled_choice {controls_ frname ltext mlist choices mclass} {
     set row [llength $controls]
     set wi $frname.modpick$row
     set lwi $frname.mcl_$row
-    ttk::label $lwi -text [f8 $ltext]
+    ttk::label $lwi -text [f8 $ltext] {*}[col_width_label]
     set var ::var$wi
     set $var 0
     if {[llength $choices] > 0} {
-        ttk::combobox $wi -state readonly -values [f8 $choices]
+        ttk::combobox $wi -state readonly -values [f8 $choices] \
+                      {*}[col_width_data]
         $wi current 0
         bind $wi <<ComboboxSelected>> {update_enables %W}
     } else {
@@ -1127,7 +1137,8 @@ proc add_labeled_choice {controls_ frname ltext mlist choices mclass} {
             set $var 1
             set dis {-state disabled}
         }
-        ttk::checkbutton $wi -variable $var {*}$dis -command {update_enables %W}
+        ttk::checkbutton $wi -variable $var {*}$dis \
+                         -command {update_enables %W} {*}[col_width_data]
         bind $wi <FocusIn> +[list focus .]
     }
     hbind [list $lwi $wi] cmd_help modpick $row
@@ -1137,7 +1148,7 @@ proc add_labeled_choice {controls_ frname ltext mlist choices mclass} {
                           var $var \
                           mods $mlist \
                           mclass $mclass \
-                         ]
+                     ]
 }
 
 proc create_mods_frame {ct conf_file} {
