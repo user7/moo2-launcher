@@ -349,6 +349,10 @@ proc scan_version {path fname} {
                 default { set v ? }
             }
         }
+        2617457 {
+            set v "1.31"
+            set lang .multi
+        }
         2612563 {
             set v "1.31"
             set lang .es/it
