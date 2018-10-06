@@ -4,6 +4,7 @@ MOO2 Launcher changelog.
 
     - Aligned dosbox options and mods.
     - Overlong labels now wrap.
+    - 1.31 multilingual version (from Powerplus cd-rom) is now recognized.
 
 1.3
 
