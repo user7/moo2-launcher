@@ -603,6 +603,7 @@ proc cmd_check_path {v} {
         set ::gpath_status [mc m-gpath-no-dir]
     } else {
         set ver [scan_version $val ORION150.EXE]
+        set ::dst_version $ver
         if {$ver eq ""} {
             set ver [scan_version $val ORION2.EXE]
         }
@@ -703,6 +704,30 @@ Path=$Path
     }
 }
 
+proc glob_tails {src} {
+    return [lsort -ascii [glob -nocomplain -tails -dir $src *]]
+}
+
+proc jll {args} {
+    ll "jll: [join $args " :: "]"
+}
+
+# files_do -- perform file action (move or copy from src to dst) on a list of
+# items. This is needed to make partial backup of just patch-related files in
+# game directory.
+proc files_do {action src dst {src_items {}}} {
+    if {$src_items eq {}} { set src_items [glob_tails $src] }
+    file mkdir $dst
+    foreach i $src_items {
+        set srci [norm_path $src $i]
+        if [file exists $srci] {
+            set dsti [norm_path $dst $i]
+            if [file isdirectory $dsti] { file delete -force $dsti }
+            file $action -force $srci $dsti
+        }
+    }
+}
+
 proc cmd_install {} {
     set err "";
     if {$::gpath_err ne ""} {
@@ -718,38 +743,71 @@ proc cmd_install {} {
     }
 
     set dst [abs_path $::gpath]
-    set dstsub "$dst/150"
-    set dst2 "$dst/150/launcher"
     set src [abs_path $::package_dir]
-    set src2 [abs_path $::appdir]
+    set dst_la [norm_path $dst launcher]
+    set src_la [abs_path $::appdir]
     if [catch {
-        if [file exists $dstsub] { file delete -force $dstsub }
-        file copy -force {*}[glob -join -dir $src *] $dst
-        if {$src2 ne $dst2} {
-            file delete -force $dst2
-            file copy -force $src2 $dst2
-        }
-    } err] {
-        tk_messageBox -title [mc m-inst-err-title] -icon warning \
-                                        -message [mc m-inst-copy-failed $err]
-        create_gui
-        return
-    }
-    # adding boxer entry for mac os
-    if {[isboxer $::dpath]} {
-        set plist [abs_path $dst .. "Game Info.plist"]
-        set xml [read_file $plist]
-        if [regexp "(.*<array>)(.*)(</array>.*)" $xml a a1 a2 a3] {
-            if {![regexp "ORION150.EXE" $a2]} {
-                write_file $plist "$a1
-		<dict>
-			<key>BXLauncherPath</key>
-			<string>C.harddisk/ORION150.EXE</string>
-			<key>BXLauncherTitle</key>
-			<string>Master Of Orion 2 patch 1.50</string>
-		</dict>$a2$a3"
+
+        # try backing up if previous version is installed
+        set restore {}
+        if {$::dst_version ne ""} {
+            if [catch {
+                set ver [string map {? unknown} $::dst_version]
+                set ts [clock format [clock seconds] -format %Y%m%d-%H%M%S]
+                set bak [norm_path $dst 150-backups $ver--$ts]
+
+                # move current patch files to backup
+                files_do rename $dst $bak [glob_tails $src]
+
+                # backup half successful, setup restore comands
+                set restore [list \
+                                [list files_do rename $bak $dst] \
+                                [list file delete $bak]]
+
+                # also backup current launcher for completeness
+                if {$dst_la ne $src_la} { files_do rename $dst $bak launcher }
+            } err_bak] {
+                error [mc m-inst-bak-failed $err_bak]
             }
         }
+
+        # copy patch and launcher files
+        if [catch {
+            files_do copy $src $dst [glob_tails $src]
+            if {$dst_la ne $src_la} {
+                file delete -force $dst_la
+                file copy -force $src_la $dst_la
+            }
+        } err_copy] {
+            error [mc m-inst-copy-failed $err_copy]
+        }
+
+        if [catch {
+            # adding boxer entry for mac os
+            if [isboxer $::dpath] {
+                set plist [abs_path $dst .. "Game Info.plist"]
+                set xml [read_file $plist]
+                if [regexp "(.*<array>)(.*)(</array>.*)" $xml a a1 a2 a3] {
+                    if {![regexp "ORION150.EXE" $a2]} {
+                        write_file $plist "$a1
+                        <dict>
+                                <key>BXLauncherPath</key>
+                                <string>C.harddisk/ORION150.EXE</string>
+                                <key>BXLauncherTitle</key>
+                                <string>Master Of Orion 2 patch 1.50</string>
+                        </dict>$a2$a3"
+                    }
+                }
+            }
+        } err_plist] {
+            error [mc m-inst-plist-failed $err_plist]
+        }
+    } err] {
+        # attempt to restore from backup, fail silently if something went wrong
+        catch { foreach r $restore { {*}$r } }
+        tk_messageBox -title [mc m-inst-err-title] -icon warning -message $err
+        # create_gui
+        return
     }
 
     dict set ::settings target_emulator $dst $::dpath
@@ -757,8 +815,8 @@ proc cmd_install {} {
     set ::need_inst 0
     catch {
         save_settings
-        if {$dst2 ne $src2} {
-            set ::appdir $dst2
+        if {$dst_la ne $src_la} {
+            set ::appdir $dst_la
             set ::settings_file [app_path MOOL2.settings]
             save_settings
         }

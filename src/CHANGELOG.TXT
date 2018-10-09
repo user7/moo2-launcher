@@ -1,5 +1,10 @@
 MOO2 Launcher changelog.
 
+1.5
+
+    - Launcher now backs up existing patch files before installing and restores
+      in case of failure. This is to preserve custom user configuration.
+
 1.4
 
     - Aligned dosbox options and mods.
