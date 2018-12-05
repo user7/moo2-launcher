@@ -3,8 +3,13 @@ set -e
 moo2_pack=$(s/make-moo2-package)
 moo2_ver=${moo2_pack#MOO2.}
 [ "$moo2_ver" != "" ] || (echo no version in package name: $moo2_pack; exit 1)
-la_ver=$([ "$1" != "" ] && echo $1 || git describe --dirty)
-out=MOO2-${moo2_ver}-${la_ver}
+if [ "$la_ver" == "git" ]
+then
+    la_ver=-$([ "$1" != "" ] && echo $1 || git describe --dirty)
+else
+    la_ver=
+fi
+out=MOO2-${moo2_ver}${la_ver}
 [ -d "$out" ] && rm -rf "$out"
 mkdir "$out"
 cp -r src moo2-launcher "MOO2 Launcher.exe" misc/INSTALL.TXT "$moo2_pack" "$out"
@@ -12,7 +17,7 @@ cp LICENSE "$out"/src/GPL2.TXT
 cp misc/dosbox.conf "$out/$moo2_pack/150"
 echo $la_ver > "$out/src/VERSION"
 echo $out
-zip=MOO2-${moo2_ver}-$la_ver.zip
+zip=$out.zip
 [ -f "$zip" ] && rm "$zip"
 zip -qr "$zip" "$out"
 echo "$zip"
