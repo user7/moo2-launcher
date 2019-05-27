@@ -1735,8 +1735,13 @@ proc parse_conf {ctx fname opt} {
                     set opt2 1
                     set fname2 [string range $fname2 1 end]
                 }
-                set fname2 [abs_path [dict get $ctx root] {*}[split $fname2 "\\/"]]
                 set old_stack [dict get $ctx stack]
+                set basepath [dict get $ctx root]
+                if {[string range $fname2 0 0] eq "." &&
+                    [regexp "(.*\[\\/\])" $fname - dir]} {
+                    set basepath $dir
+                }
+                set fname2 [abs_path $basepath {*}[split $fname2 "\\/"]]
                 dict lappend ctx stack $fname
                 set ctx [parse_conf $ctx $fname2 $opt2]
                 dict set ctx stack $old_stack
