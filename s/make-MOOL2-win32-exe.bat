@@ -14,6 +14,6 @@ copy ..\misc\tclkit.ico MOOL2.vfs\
 copy ..\misc\tclkit.inf MOOL2.vfs\
 ..\misc\tclkitsh-8.5.9-win32.upx.exe ..\misc\sdx.kit wrap MOOL2.exe -runtime ..\misc\tclkit-gui-8_6_6-twapi-4_1_27-x86-max.exe
 del "..\MOO2 1.50 Launcher.exe"
-move MOOL2.exe "..\MOO2 Launcher.exe"
+move /y MOOL2.exe "..\MOO2 Launcher.exe"
 cd ..
 rmdir wrap.tmp /s /q
