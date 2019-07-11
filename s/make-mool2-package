@@ -12,7 +12,7 @@ fi
 out=MOO2-${moo2_ver}${la_ver}
 [ -d "$out" ] && rm -rf "$out"
 mkdir "$out"
-cp -r src moo2-launcher "MOO2 Launcher.exe" misc/INSTALL.TXT "$moo2_pack" "$out"
+cp -r src install-linux install-MacOS "Install.exe" misc/INSTALL.TXT "$moo2_pack" "$out"
 cp LICENSE "$out"/src/GPL2.TXT
 cp misc/dosbox.conf "$out/$moo2_pack/150"
 echo $la_ver > "$out/src/VERSION"

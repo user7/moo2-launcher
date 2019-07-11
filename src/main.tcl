@@ -643,7 +643,7 @@ proc create_shortcut {} {
             set lnk [abs_path [::twapi::get_shell_folder desktopdirectory] \
                          "MOO2 $::package_version.lnk"]
             ::twapi::write_shortcut $lnk \
-                -path [app_path "MOO2 Launcher.exe"] \
+                -path [app_path "Install.exe"] \
                 -workdir [app_path]
         }
         default {
@@ -684,7 +684,7 @@ proc create_shortcut {} {
                     }
                     append script_path $c
                 }
-                set main [quote_xdg_exec_argument [app_path moo2-launcher]]
+                set main [quote_xdg_exec_argument [app_path install-linux]]
                 set Exec [quote_xdg_string "tclsh $main"]
                 set Icon [quote_xdg_string [app_path src icon.gif]]
                 set Path [quote_xdg_string [app_path]]
@@ -772,14 +772,16 @@ proc cmd_install {} {
         }
 
         # copy patch and launcher files
-        if [catch {
-            files_do copy $src $dst [glob_tails $src]
-            if {$dst_la ne $src_la} {
-                file delete -force $dst_la
-                file copy -force $src_la $dst_la
+        if {$src ne $dst} {
+            if [catch {
+                files_do copy $src $dst [glob_tails $src]
+                if {$dst_la ne $src_la} {
+                    file delete -force $dst_la
+                    file copy -force $src_la $dst_la
+                }
+            } err_copy] {
+                error [mc m-inst-copy-failed $err_copy]
             }
-        } err_copy] {
-            error [mc m-inst-copy-failed $err_copy]
         }
 
         if [catch {
