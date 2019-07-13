@@ -32,9 +32,9 @@ should be capable of running it.
 Authors
 -------
 
-Copyright (C) 2017 by Alexey Svirchevsky.
+Copyright (C) 2017-2019 by Alexey Svirchevsky.
 
 Contributors:
 
-Ricardo Ebbenhorst -- graphics, testing, usability suggestions.  
+Ricardo Ebbenhorst -- graphics, testing, usability suggestions.
 Darza -- proofreading.
