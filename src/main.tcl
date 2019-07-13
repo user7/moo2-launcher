@@ -291,7 +291,7 @@ proc find_best_source {} {
     set ::package_dir ""
     set ::package_version ""
     if {[catch {
-        set files [lsort -ascii [glob -dir [app_path] MOO2.1.*]]
+        set files [lsort -ascii [glob -dir [app_path] patch MOO2.1.*]]
     }]} { return }
     set bestv ""
     foreach f $files {
