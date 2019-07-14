@@ -4,24 +4,25 @@
 
     1. Overview
 
-Launcher is a GUI program for installing, configuring and running
-unofficial fan patch 1.50 for Master of Orion 2. Since 1.50.8 the
-patch supports improved mod format which allows Launcher to detect
-installed mods and present available options to user. Launcher also
-exposes few DOSBox options, in particular network multiplayer is now
-trivial to setup. In launch window right-clicking any mod or option
-brings up its discription.
+MOO2 Launcher is a GUI program for installing, configuring and running
+unofficial fan patch 1.50 for Master of Orion II: Battle at Antares.
+Since 1.50.8 the patch supports an improved mod format which allows
+MOO2 Launcher to detect installed mods and present the available
+options to the user. MOO2 Launcher also exposes a few DOSBox options,
+in particular network multiplayer is now trivial to setup. In launch
+window, right-clicking any mod or option brings up its discription.
 
-Launcher package normally includes the latest 1.50 patch package under
-MOO2.1.50.* subdirectory, so you don't need to download it separately.
+MOO2 Launcher package includes the latest 1.50 patch package under
+patch/ subdirectory, so there is no need to download it separately.
 
-You MUST OWN a copy of Master of Orion 2, to install or run the patch.
-This package does not contain original game files.
+You MUST OWN a copy of Master of Orion II: Battle at Antares, to
+install or run the patch. The MOO2 Launcher package does not contain
+original game files.
 
 
     2. System requirements
 
-Launcher works on Windows (XP through 10), GNU/Linux (tested on
+MOO2 Launcher works on Windows (XP through 10), GNU/Linux (tested on
 Fedora, Ubuntu and Debian), Mac OS X. Other Unix-like systems with
 recent enough Tk should be capable of running it.
 
@@ -37,7 +38,7 @@ All source code is available and can be found under src/ subdirectory.
 
     4. Authors
 
-Copyright (C) 2017 by Alexey Svirchevsky.
+Copyright (C) 2017-2019 by Alexey Svirchevsky.
 
 Contributors:
 
