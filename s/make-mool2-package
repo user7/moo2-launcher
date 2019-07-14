@@ -10,9 +10,9 @@ fi
 out=MOO2-${moo2_ver}${la_ver}
 [ -d "$out" ] && rm -rf "$out"
 mkdir "$out"
-cp -r src install-linux Install-win32.exe misc/install.txt "$out"
-cp -r "$moo2_pack" "$out"/patch
+cp -r src install-linux install-win32.exe misc/install.txt "$out"
 cp install-linux "$out"/install-macosx
+cp -r "$moo2_pack" "$out"/patch
 cp LICENSE "$out"/src/GPL2.TXT
 cp misc/dosbox.conf "$out/patch/150"
 echo $la_ver > "$out/src/VERSION"

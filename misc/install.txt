@@ -13,7 +13,7 @@ installed alongside the old one. To run your old version (e.g. GOG) use your
 old shortcut and to run 1.50 use launcher shortcut created during installation.
 
 1. Unzip package anywhere outside the MOO2 directory and on
-   a. Windows run Install-win32.exe.
+   a. Windows run install-win32.exe.
    b. Linux open a terminal inside unzipped directory and run ./install-linux.
    c. Mac OS X right click install-macosx and choose open.
 

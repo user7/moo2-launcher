@@ -643,7 +643,7 @@ proc create_shortcut {} {
             set lnk [abs_path [::twapi::get_shell_folder desktopdirectory] \
                          "MOO2 $::package_version.lnk"]
             ::twapi::write_shortcut $lnk \
-                -path [app_path "Install-win32.exe"] \
+                -path [app_path "install-win32.exe"] \
                 -workdir [app_path]
         }
         default {
