@@ -750,8 +750,7 @@ proc cmd_install {} {
         set restore {}
 
         # if inside $dst/150 then windows will fail on move
-        set sub [abs_path $dst 150]
-        if [string equal -length [string length $sub] $sub $src] {
+        if [string equal -length [string length $dst] $dst $src] {
             error [mc m-inst-bad-source]
         }
 
@@ -778,16 +777,14 @@ proc cmd_install {} {
         }
 
         # copy patch and launcher files
-        if {$src ne $dst} {
-            if [catch {
-                files_do copy $src $dst [glob_tails $src]
-                if {$dst_la ne $src_la} {
-                    file delete -force $dst_la
-                    file copy -force $src_la $dst_la
-                }
-            } err_copy] {
-                error [mc m-inst-copy-failed $err_copy]
+        if [catch {
+            files_do copy $src $dst [glob_tails $src]
+            if {$dst_la ne $src_la} {
+                file delete -force $dst_la
+                file copy -force $src_la $dst_la
             }
+        } err_copy] {
+            error [mc m-inst-copy-failed $err_copy]
         }
 
         if [catch {
