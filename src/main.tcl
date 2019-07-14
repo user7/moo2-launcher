@@ -747,9 +747,15 @@ proc cmd_install {} {
     set dst_la [norm_path $dst launcher]
     set src_la [abs_path $::appdir]
     if [catch {
+        set restore {}
+
+        # if inside $dst/150 then windows will fail on move
+        set sub [abs_path $dst 150]
+        if [string equal -length [string length $sub] $sub $src] {
+            error [mc m-inst-bad-source]
+        }
 
         # try backing up if previous version is installed
-        set restore {}
         if {$::dst_version ne ""} {
             if [catch {
                 set ver [string map {? unknown} $::dst_version]
