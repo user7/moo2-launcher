@@ -1,6 +1,6 @@
 # This file is part of MOO2 Launcher.
 #
-# Copyright (C) 2017 by Alexey Svirchevsky.
+# Copyright (C) 2017-2019 by Alexey Svirchevsky.
 #
 # This program is free software distributed under the
 # terms of the GNU General Public License version 2,
@@ -64,7 +64,7 @@ server -- listen for incoming connections."
     m-inst-ok-title     "Success!"
     m-inst-err-title    "Error!"
     m-inst-ok-ver-path  "Patch version %s has been installed to %s"
-    m-inst-bad-source   "You are runnig install from game directoy, this will interfere with backup. Restart installation from location outside game directory."
+    m-inst-bad-source   "You are runnig install from game directoy, this will interfere with backup. Restart installation from a location outside game directory."
     m-inst-no-gpath     "You have to specify a valid MOO2 directory to install"
     m-inst-unknown      "You have unknown version of the game installed. DOS version 1.31 or higher is required for installation. Install official patch 1.31 and retry."
     m-inst-outdated     "You have outdated version %s of the game installed. DOS version 1.31 or higher is required for installation. Install official patch 1.31 and retry."
@@ -82,10 +82,10 @@ server -- listen for incoming connections."
     m-menu-changelog    "Changelog"
     m-menu-about        "About"
     m-menu-help-readme  "Patch Notes"
-    m-menu-help-manual  "Patch Manual"
-    m-menu-help-add     "Manual Addendum"
+    m-menu-help-manual  "Patch Manual I-pdf"
+    m-menu-help-add     "Patch Manual II-xls"
     m-about-title       "MOO2 Launcher %s"
-    m-about-text        "© 2017 Alexey Svirchevsky\n\nThis program is distributed under the\nterms of the GNU General Public\nLicense version 2."
+    m-about-text        "© 2017-2019 Alexey Svirchevsky\n\nThis program is distributed under the\nterms of the GNU General Public\nLicense version 2."
     m-menu-actions      "Tools"
     m-menu-gui-log      "Debug GUI"
     m-menu-irc          "IRC Channel"
