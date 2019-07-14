@@ -836,12 +836,6 @@ proc cmd_install {} {
     create_gui
 }
 
-proc cmd_create_gui_inst {} {
-    set ::need_inst 1
-    catch { destroy .i }
-    create_gui
-}
-
 proc cmd_browse {v} {
     if {$v eq "gpath"} {
         set p [norm_path [tk_chooseDirectory -initialdir $::gpath]]
@@ -1492,9 +1486,6 @@ proc create_gui {} {
             -command {cmd_inst_open ORION2.LOG}
         .m.actions add command -label [mc m-menu-gui-log] \
             -command cmd_toggle_log
-        .m.actions add separator
-        .m.actions add command -label [mc m-b-reinstall] \
-            -command cmd_create_gui_inst
         menu .m.show
         .m.show add command -label USER.CFG \
             -command {cmd_inst_open 150 USER.CFG}
