@@ -1510,7 +1510,7 @@ proc create_gui {} {
     set cmd [expr {$inst ? "cmd_dist_open" : "cmd_inst_open"}]
     menu .m.help
     .m.help add command -label [mc m-menu-help-readme] \
-        -command [list $cmd README_150.TXT]
+        -command [list $cmd CHANGELOG_150.TXT]
     .m.help add command -label [mc m-menu-help-manual] \
         -command [list $cmd 150 docs MANUAL_150.PDF]
     .m.help add command -label [mc m-menu-help-add] \
