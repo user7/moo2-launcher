@@ -1,5 +1,14 @@
 MOO2 Launcher changelog.
 
+1.7
+
+    - Restructured package.
+    - Cleaner error message when installing from game directory.
+
+1.6
+
+    - Supported relative paths in MOO2 configs.
+
 1.5
 
     - Launcher now backs up existing patch files before installing and restores
