@@ -1,10 +1,10 @@
 
-                            MOO2 patch 1.50.x
+                               MOO2 patch 1.50.x
 
 
-This package contains MOO2 1.50 patch with launcher. You need a working copy of
-MOO2 1.31+ to install it. This an unofficial fan patch, it is not supported by
-a company or anyone at all, use it at your own risk.
+This package contains MOO2 1.50 patch with MOO2 Launcher. You need a working
+copy of MOO2 DOS version 1.31+ to install it. This an unofficial fan patch, it
+is not supported by a company or anyone at all, use it at your own risk.
 
 Installation:
 
@@ -20,13 +20,14 @@ old shortcut and to run 1.50 use launcher shortcut created during installation.
 2. You will be presented with patch installation prompt: Specify MOO2 and
    DOSBox locations and press Install (On Mac you need to locate and specify
    path to "Boxer Standalone" binary instead of DOSBox). For Steam and GOG
-   distros, Launcher should be able to detect all locations automatically.
+   distros, MOO2 Launcher should be able to detect all locations automatically.
 
-3. After reporting success Launcher will switch to normal mode, from where you
-   can run the game. Press Launch! and check the version number in the bottom
-   right corner on the Title screen to confirm that you are running 1.50.
+3. After reporting success MOO2 Launcher will switch to normal mode, from where
+   you can run the game. Press Launch! and check the version number in the
+   bottom right corner of the MOO2 Title screen to confirm that you are running
+   version 1.50.
 
-If this does not work see Installation FAQ in patch/150/docs/MANUAL_150.PDF.
+If this does not work see 'Installation FAQ' in patch/150/docs/MANUAL_150.PDF.
 
 For feedback or questions contact us at:
 www.gog.com/forum/master_of_orion_series/master_of_orion_2_unofficial_150_patch
