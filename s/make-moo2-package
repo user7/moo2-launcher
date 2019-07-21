@@ -22,4 +22,5 @@ mkdir "$out"
 cp -r "$pack"/* "$out"
 cp "$build"/ORION2.EXE "$out"/ORION150.EXE
 cp "$build"/EXAMPLE.CFG "$out"/150/docs
+cp "$build"/config.json "$out"/150/docs
 echo $out
