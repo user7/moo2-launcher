@@ -2,24 +2,28 @@
                                MOO2 patch 1.50.x
 
 
-This package contains MOO2 1.50 patch with MOO2 Launcher. You need a working
-copy of MOO2 DOS version 1.31+ to install it. This an unofficial fan patch, it
-is not supported by a company or anyone at all, use it at your own risk.
+This package contains MOO2 1.50 patch with MOO2 Launcher. A working copy of
+MOO2 DOS version 1.31 or higher is required to install it. English, French,
+German, Italian and Spanish languages are supported.
+
+Installation of the patch does not break your current MOO2 installation. No
+original files are overwritten. To run your old version (e.g. GOG or Steam),
+use your old shortcut and to run 1.50 use the MOO2 Launcher shortcut created
+during installation.
+
+This an unofficial fan patch, it is not supported by a company or anyone at
+all, use it at your own risk.
 
 Installation:
-
-Note that installation doesn't damage your distribution, the 1.50 executable is
-installed alongside the old one. To run your old version (e.g. GOG) use your
-old shortcut and to run 1.50 use launcher shortcut created during installation.
 
 1. Unzip package anywhere outside the MOO2 directory and on
    a. Windows run install-win32.exe.
    b. Linux open a terminal inside unzipped directory and run ./install-linux.
    c. Mac OS X right click install-macosx and choose open.
 
-2. You will be presented with patch installation prompt: Specify MOO2 and
+2. You will be presented with a patch installation prompt: Specify MOO2 and
    DOSBox locations and press Install (On Mac you need to locate and specify
-   path to "Boxer Standalone" binary instead of DOSBox). For Steam and GOG
+   path to "Boxer Standalone" binary instead of DOSBox). For GOG and Steam
    distros, MOO2 Launcher should be able to detect all locations automatically.
 
 3. After reporting success MOO2 Launcher will switch to normal mode, from where
