@@ -1,8 +1,8 @@
 
                                MOO2 patch 1.50.x
+                               
 
-
-This package contains MOO2 1.50 patch with MOO2 Launcher. A working copy of
+This package contains MOO2 patch 1.50 with MOO2 Launcher. A working copy of
 MOO2 DOS version 1.31 or higher is required to install it. English, French,
 German, Italian and Spanish languages are supported.
 
@@ -28,16 +28,23 @@ Installation:
 
 3. After reporting success MOO2 Launcher will switch to normal mode, from where
    you can run the game. Press Launch! and check the version number in the
-   bottom right corner of the MOO2 Title screen to confirm that you are running
+   bottom right corner of MOO2's Title screen to confirm that you are running
    version 1.50.
 
-If this does not work see 'Installation FAQ' in patch/150/docs/MANUAL_150.PDF.
+Troubleshooting:
+
+> If installation does not work, refer to 'Installation FAQ' in the manual:
+  patch/150/docs/MANUAL_150.PDF.
+
+Documentation:
+
+- Changelog: patch/CHANGELOG_150.TXT
+- Manual part I: patch/150/docs/MANUAL_150.PDF
+- Manual part II: patch/150/docs/MANUAL_150.XLS
+- Config parameters: patch/150/docs/EXAMPLE.CFG
 
 For feedback or questions contact us at:
 www.gog.com/forum/master_of_orion_series/master_of_orion_2_unofficial_150_patch
 
-See also:
-
-    - changelog in patch/CHANGELOG_150.TXT
-    - in-depth docs in patch/150/docs/MANUAL_150.PDF
-    - www.moo2mod.com for the latest version of this package.
+Find the latest version of this package at:
+http://moo2mod.com/
