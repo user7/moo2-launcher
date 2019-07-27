@@ -818,14 +818,9 @@ proc cmd_install {} {
     dict set ::settings target_emulator $dst $::dpath
     dict set ::settings current_target $dst
     set ::need_inst 0
-    catch {
-        save_settings
-        if {$dst_la ne $src_la} {
-            set ::appdir $dst_la
-            set ::settings_file [app_path MOOL2.settings]
-            save_settings
-        }
-    }
+    set ::appdir $dst_la
+    set ::settings_file [app_path MOOL2.settings]
+    save_settings
     if {$::mklinks} {
         if {[catch {create_shortcut} err]} {
             ll "failed to create shortcut: $err"
