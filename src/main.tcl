@@ -1482,6 +1482,8 @@ proc create_gui {} {
         .m.actions add command -label [mc m-menu-gui-log] \
             -command cmd_toggle_log
         menu .m.show
+        .m.show add command -label DOSBox.conf \
+            -command {cmd_inst_open 150 dosbox.conf}
         .m.show add command -label USER.CFG \
             -command {cmd_inst_open 150 USER.CFG}
         # show build*.cfg
