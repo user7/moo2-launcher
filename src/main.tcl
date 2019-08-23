@@ -1795,11 +1795,14 @@ proc get_mods {root conf_file} {
     set err ""
     if {[dict exists $ctx conf scan_mods]} {
         set scan_path [norm_path $root {*}[split [dict get $ctx conf scan_mods] "\\/"]]
-        if {[catch {set ff [glob -join -dir $scan_path * *.CFG]} err]} {
+        if {[catch {set ff [glob -join -dir $scan_path * *.*]} err]} {
             ll "scan failed: $err scan_path=$scan_path root=$root"
             return [dict create warns $err]
         }
         foreach f $ff {
+            if {![regexp -nocase ".CFG$" $f]} {
+                continue
+            }
             set f [norm_path $f]
             set ctxm [parse_conf [dict create \
                 root $root \
