@@ -587,9 +587,17 @@ proc cmd_check_path {v} {
         return
     }
     if {$v eq "dpath"} {
-        if {[file isfile $val]} {
-            $label configure -foreground darkgreen
-            set ::dpath_status "OK"
+
+        if [file isfile $val] {
+            if [looks_like_dosbox_exe $val] {
+                $label configure -foreground darkgreen
+                set ::dpath_status "OK"
+            } else {
+                $label configure -foreground red
+                set exe [os_specific_dosbox_exe]
+                set ::dpath_status [mc m-dpath-bad $exe]
+                set ::dpath_err [mc m-inst-dpath-bad $exe]
+            }
         } else {
             $label configure -foreground red
             set ::dpath_status [mc m-dpath-not-found]
@@ -1379,8 +1387,8 @@ proc cmd_inst_open {args} {
     native_open [norm_path [dict get $::settings current_target] {*}$args]
 }
 
-proc make_path_frame {var label_code} {
-    set f [ttk::labelframe .r.$var -text [mc $label_code]]
+proc make_path_frame {var label} {
+    set f [ttk::labelframe .r.$var -text $label]
     ttk::entry $f.e -textvariable "::$var"
     ttk::button $f.b -text [mc m-b-browse] -command [list cmd_browse $var]
     ttk::label $f.s -textvariable "::${var}_status" {*}$::wl
@@ -1412,19 +1420,32 @@ proc isboxer {s} {
     regexp "Boxer Standalone$" $s
 }
 
-proc os_specific_dosbox_label {} {
+proc os_specific_dosbox_exe {} {
     switch $::tcl_platform(platform) {
         windows {
-            return m-dpath-label-win
+            set m m-dpath-exe-win
         }
         default {
             if {$::tcl_platform(os) eq "Linux"} {
-                return m-dpath-label-linux
+                set m m-dpath-exe-linux
             } else {
-                return m-dpath-label-macos
+                set m m-dpath-exe-macos
             }
         }
     }
+    return [mc $m]
+}
+
+proc looks_like_dosbox_exe {fname} {
+    set exe [os_specific_dosbox_exe]
+    set exelen [string length $exe]
+    set flen [string length $fname]
+    if {$exelen <= $flen} {
+        set fsub [string range $fname [expr $flen - $exelen] end]
+        ll "exe=$exe fsub=$fsub cmp=[string compare -nocase $fsub $exe]"
+        return [expr [string compare -nocase $fsub $exe] == 0]
+    }
+    return 0
 }
 
 proc create_gui {} {
@@ -1448,8 +1469,8 @@ proc create_gui {} {
         } else {
             grid [make_inst_frame]
         }
-        grid [make_path_frame gpath "m-gpath-label"]
-        grid [make_path_frame dpath [os_specific_dosbox_label]]
+        grid [make_path_frame gpath [mc "m-gpath-label"]]
+        grid [make_path_frame dpath [os_specific_dosbox_exe]]
         grid [ttk::checkbutton .r.links -text [mc m-mklinks] \
                   -variable ::mklinks] -sticky w
         grid [ttk::button .r.inst -text [mc m-b-install] \

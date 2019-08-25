@@ -15,11 +15,12 @@
     m-no-moo2-inst      "Не удалось найти установленную копию MOO2. Чтобы продолжить, укажите пути до MOO2 и DOSBox вручную."
     m-select-moo2-inst  "Вариант установки"
 
-    m-dpath-label-win   "DOSBox.exe"
-    m-dpath-label-linux "dosbox"
-    m-dpath-label-macos "Boxer Standalone (DOSBox)"
+    m-dpath-exe-win   "DOSBox.exe"
+    m-dpath-exe-linux "dosbox"
+    m-dpath-exe-macos "Boxer Standalone"
     m-dpath-none        "(обязательно)"
     m-dpath-not-found   "Файла не существует!"
+    m-dpath-bad         "Имя файла должно быть '%s'"
 
     m-gpath-none        "(обязательно)"
     m-gpath-no-moo2     "Нет файлов %s и %s!"
@@ -72,6 +73,7 @@ full screen -- полноэкранный режим.
     m-inst-unknown      "У вас установлена неизвестная версия игры, для установки патча необходимо иметь DOS версию 1.31 или выше. Установите официальный патч 1.31 и попробуйте снова."
     m-inst-outdated     "У вас установлена устаревшая версия игры %s. Для установки патча необходимо иметь DOS версию 1.31 или выше. Установите официальный патч 1.31 и попробуйте снова."
     m-inst-no-dpath     "Необходимо указать путь до исполняемого файла DOSBox"
+    m-inst-dpath-bad    "Исполняемый файл DOSBox должен называться '%s'"
     m-inst-no-patch     "Файлы патча отсутствуют или повреждены, установка невозможна. Скачайте патч повторно."
     m-inst-bak-failed   "Ошибка при создании резервной копии:\n%s"
     m-inst-copy-failed  "Ошибка при копировании файлов:\n%s"
