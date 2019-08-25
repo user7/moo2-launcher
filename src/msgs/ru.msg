@@ -14,19 +14,22 @@
     m-inst-prompt       "Установка патча MOO2 %s"
     m-no-moo2-inst      "Не удалось найти установленную копию MOO2. Чтобы продолжить, укажите пути до MOO2 и DOSBox вручную."
     m-select-moo2-inst  "Вариант установки"
-    m-gpath-label       "Каталог MOO2"
-    m-gpath-none        "(необходимо для установки)"
+
+    m-dpath-label-win   "DOSBox.exe"
+    m-dpath-label-linux "dosbox"
+    m-dpath-label-macos "Boxer Standalone (DOSBox)"
+    m-dpath-none        "(обязательно)"
+    m-dpath-not-found   "Файла не существует!"
+
+    m-gpath-none        "(обязательно)"
     m-gpath-no-moo2     "Нет файлов %s и %s!"
     m-gpath-ver?        "Неизвестная версия!"
     m-gpath-ver-old     "Устаревшая версия (%s)"
     m-gpath-ver-ok      "OK, версия %s"
     m-gpath-no-dir      "Каталога не существует!"
-    m-dpath-label       "Исполняемый файл DOSBox"
-    m-dpath-not-found   "Файла не существует!"
-    m-dpath-none        "(необходимо для установки)"
+    m-gpath-label       "Каталог MOO2"
+
     m-l-custom          "Указать путь"
-    m-l-moo2-dir        "Каталог MOO2:"
-    m-l-dosbox-exe      "Исполняемый файл DOSBox:"
     m-b-browse          "Обзор..."
     m-mklinks           "Добавить ярлык на рабочий стол"
     m-b-install         "Установить"
@@ -39,7 +42,8 @@
     m-res               "Разрешение"
     m-res-help          "ШxВ -- окно Ш пикселей в ширину и В в высоту.
 ШхВ (scaler x2 или x3) -- то же, но используя scaler.
-full screen -- полноэкранный режим."
+full screen -- полноэкранный режим.
+"
     m-lock-mouse        "Автозахват мыши"
     m-lock-mouse-help   "Если автозахват включён, то мышь захватывается окном DOSBox при нажатии. Освободить курсор можно нажатием Ctrl+F10 или Alt+Tab. Если автозахват выключен, то можно переключаться между окнами с помощью мыши."
     m-switches          "Ключи"

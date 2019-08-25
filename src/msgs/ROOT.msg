@@ -14,7 +14,13 @@
     m-inst-prompt       "Installing MOO2 patch %s"
     m-no-moo2-inst      "Unable to detect any existing MOO2 installations. To proceed specify paths to MOO2 and DOSBox manually."
     m-select-moo2-inst  "Installation options"
-    m-dpath-label       "DOSBox executable"
+
+    m-dpath-label-win   "DOSBox.exe"
+    m-dpath-label-linux "dosbox"
+    m-dpath-label-macos "Boxer Standalone (DOSBox)"
+    m-dpath-none        "(required)"
+    m-dpath-not-found   "File not found!"
+
     m-gpath-none        "(required)"
     m-gpath-no-moo2     "No %s or %s in this directory!"
     m-gpath-ver?        "Unknown version!"
@@ -22,11 +28,8 @@
     m-gpath-ver-ok      "OK, version %s"
     m-gpath-no-dir      "Directory does not exist!"
     m-gpath-label       "MOO2 directory"
-    m-dpath-not-found   "File not found!"
-    m-dpath-not-found-err "File not found!"
-    m-dpath-none        "(required)"
+
     m-l-custom          "Custom"
-    m-l-dosbox-exe      "DOSBox executable:"
     m-b-browse          "Browse..."
     m-mklinks           "Create desktop shortcut"
     m-b-install         "Install"
@@ -36,7 +39,7 @@
     m-winf-def-desc     "Move mouse over mod or DOSBox option to see its description. This window can be opened or closed by pressing right mouse button."
     m-output            "Output"
     m-output-help       "Select a mechanism DOSBox uses for drawing graphics. Output affects image quality and ability to scale image. Depending on OS and hardware some outputs may not work."
-    m-res        "Resolution"
+    m-res               "Resolution"
     m-res-help   "WxH -- game runs in a window W wide and H high.
 WxH (scaler 2x or 3x) -- same, but use dosbox scaler.
 full screen -- run dosbox in full screen mode.

@@ -1379,8 +1379,8 @@ proc cmd_inst_open {args} {
     native_open [norm_path [dict get $::settings current_target] {*}$args]
 }
 
-proc make_path_frame {var} {
-    set f [ttk::labelframe .r.$var -text [mc m-$var-label]]
+proc make_path_frame {var label_code} {
+    set f [ttk::labelframe .r.$var -text [mc $label_code]]
     ttk::entry $f.e -textvariable "::$var"
     ttk::button $f.b -text [mc m-b-browse] -command [list cmd_browse $var]
     ttk::label $f.s -textvariable "::${var}_status" {*}$::wl
@@ -1412,6 +1412,21 @@ proc isboxer {s} {
     regexp "Boxer Standalone$" $s
 }
 
+proc os_specific_dosbox_label {} {
+    switch $::tcl_platform(platform) {
+        windows {
+            return m-dpath-label-win
+        }
+        default {
+            if {$::tcl_platform(os) eq "Linux"} {
+                return m-dpath-label-linux
+            } else {
+                return m-dpath-label-macos
+            }
+        }
+    }
+}
+
 proc create_gui {} {
     destroy .r .m
     menu .m
@@ -1433,8 +1448,8 @@ proc create_gui {} {
         } else {
             grid [make_inst_frame]
         }
-        grid [make_path_frame gpath]
-        grid [make_path_frame dpath]
+        grid [make_path_frame gpath "m-gpath-label"]
+        grid [make_path_frame dpath [os_specific_dosbox_label]]
         grid [ttk::checkbutton .r.links -text [mc m-mklinks] \
                   -variable ::mklinks] -sticky w
         grid [ttk::button .r.inst -text [mc m-b-install] \
