@@ -1,5 +1,5 @@
                               ===================
-                               MOO2 PATCH 1.50.x                               
+                               MOO2 PATCH 1.50.x
                               ===================
 
 PREAMBLE:
@@ -26,10 +26,11 @@ INSTALLATION:
    c. Mac OS X: right click install-macosx and choose open.
 
 3. You will be presented with a patch installation prompt, which should auto-
-   detect GOG and Steam distros. If there was no auto-detection, then on
-   a. Windows and Linux: Specify MOO2 game directory and DOSBox locations.
-   b. Mac OS X: Specify locations of MOO2 game directory and "Boxer Standalone"
-      binary instead of DOSBox.
+   detect GOG and Steam distros. If there was no auto-detection, then specify
+   path to MOO2 game directory and path to emulator:
+   a. "DOSBox.exe" on Windows
+   b. "dosbox" on Linux
+   c. "Boxer Standalone" on Mac OS X
 
 4. Press Install.
 
