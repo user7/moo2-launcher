@@ -1548,8 +1548,8 @@ proc create_gui {} {
         -command [list $cmd 150 docs MANUAL_150.PDF]
     .m.help add command -label [mc m-menu-help-add] \
         -command [list $cmd 150 docs MANUAL_150.XLS]
-    .m.help add command -label "EXAMPLE.CFG" \
-        -command [list $cmd 150 docs EXAMPLE.CFG]
+    .m.help add command -label "PARAMETERS.CFG" \
+        -command [list $cmd 150 docs PARAMETERS.CFG]
     .m.help add separator
     .m.help add command -label [mc m-menu-web] \
         -command {native_open http://www.moo2mod.com}
