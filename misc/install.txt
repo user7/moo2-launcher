@@ -19,7 +19,7 @@ REQUIREMENTS:
 
 INSTALLATION:
 -------------
-1. Unzip installation package anywhere OUTSIDE of your MOO2 game directory.
+1. Unzip the installation package anywhere OUTSIDE of your MOO2 game directory.
 
 2. a. Windows: run install-win32.exe.
    b. Linux: open a terminal inside unzipped directory and run ./install-linux.
@@ -35,7 +35,7 @@ INSTALLATION:
 4. Press Install.
 
 5. After reporting success MOO2 Launcher will switch to normal mode, from where
-   you can run the game. Choose a mod & map, then Press Launch! to play.
+   you can run the game. Choose a mod & map, then press Launch! to play.
 
 TROUBLESHOOTING:
 ----------------
@@ -44,13 +44,10 @@ TROUBLESHOOTING:
 
 DOCUMENTATION:
 --------------
-- Changelog: patch/CHANGELOG_150.TXT
-- Manual part I: patch/150/docs/MANUAL_150.PDF
-- Manual part II: patch/150/docs/MANUAL_150.XLS
-- Config parameters: patch/150/docs/EXAMPLE.CFG
-
-For feedback or questions contact us at:
-www.gog.com/forum/master_of_orion_series/master_of_orion_2_unofficial_150_patch
+- Changelog:         patch/CHANGELOG_150.TXT
+- Manual part I:     patch/150/docs/MANUAL_150.PDF
+- Manual part II:    patch/150/docs/MANUAL_150.XLS
+- Config parameters: patch/150/docs/PARAMETERS.CFG
 
 Find the latest version of this package at:
 http://moo2mod.com/
