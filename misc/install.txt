@@ -39,8 +39,8 @@ INSTALLATION:
 
 TROUBLESHOOTING:
 ----------------
-> If installation does not work, refer to 'Installation FAQ' in the manual:
-  patch/150/docs/MANUAL_150.PDF.
+If installation does not work, refer to 'Installation FAQ' section of the
+manual: patch/150/docs/MANUAL_150.PDF.
 
 DOCUMENTATION:
 --------------
