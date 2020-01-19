@@ -1,5 +1,16 @@
 MOO2 Launcher changelog.
 
+1.8
+
+    - Added config.json to package.
+    - Added dosbox.conf to menu.
+    - Don't store settings in installation source path.
+    - Fixed cfg vs CFG issue on linux and Mac OS
+    - Dosbox executable name is now checked against OS-specific pattern to
+      avoid people specifying ORION2.EXE in its place.
+    - Renamed EXAMPLE.CFG to PARAMETERS.CFG.
+    - Documentation updated.
+
 1.7
 
     - Restructured package.

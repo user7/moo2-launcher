@@ -38,7 +38,7 @@ All source code is available and can be found under src/ subdirectory.
 
     4. Authors
 
-Copyright (C) 2017-2019 by Alexey Svirchevsky.
+Copyright (C) 2017-2020 by Alexey Svirchevsky.
 
 Contributors:
 
