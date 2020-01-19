@@ -1559,8 +1559,6 @@ proc create_gui {} {
         .m.help add command -label [mc m-menu-hints] \
             -command {cmd_toggle_info 1}
     }
-    .m.help add command -label [mc m-menu-changelog] \
-        -command [list native_open [app_path src CHANGELOG.TXT]]
     .m.help add command -label [mc m-menu-about] -command cmd_about
     .m add cascade -menu .m.help -label [mc m-menu-help]
     . configure -menu .m
