@@ -1,6 +1,6 @@
 # This file is part of MOO2 Launcher.
 #
-# Copyright (C) 2017-2019 by Alexey Svirchevsky.
+# Copyright (C) 2017-2020 by Alexey Svirchevsky.
 #
 # This program is free software distributed under the
 # terms of the GNU General Public License version 2,
@@ -90,7 +90,7 @@ full screen -- полноэкранный режим.
     m-menu-help-manual  "Руководство I-pdf"
     m-menu-help-add     "Руководство II-xls"
     m-about-title       "MOO2 Launcher %s"
-    m-about-text        "© 2017-2019 Алексей Свирщевский\n\nПрограмма распространяется на\nусловиях GNU General Public\nLicense version 2."
+    m-about-text        "© 2017-2020 Алексей Свирщевский\n\nПрограмма распространяется на\nусловиях GNU General Public\nLicense version 2."
     m-menu-actions      "Сервис"
     m-menu-gui-log      "Отладка GUI"
     m-menu-irc          "Канал IRC"
