@@ -2,11 +2,8 @@
                                MOO2 PATCH 1.50.x
                               ===================
 
-PREAMBLE:
---------
-The installation package contains the MOO2 patch 1.50.x with MOO2 Launcher. The
-patch is an unofficial fan patch and is not supported by a company or anyone at
-all. USE IT AT YOUR OWN RISK. Installation of the patch does not break your
+This is an unofficial fan patch, it is not supported by a company or anyone at
+all, USE IT AT YOUR OWN RISK. Installation of the patch does not break your
 current MOO2 installation. No original files are overwritten. To run your old
 version (e.g. GOG or Steam), use your old shortcut and to run 1.50 use the MOO2
 Launcher shortcut created during installation.
