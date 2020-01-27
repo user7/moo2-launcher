@@ -1757,18 +1757,14 @@ proc parse_conf {ctx fname opt} {
                 }
                 set fname2 [expand_lang_pattern [dict get $ctx lang] \
                                 [lindex $vals 0]]
-                set opt2 0
-                if {[string range $fname2 0 0] eq "?"} {
-                    set opt2 1
-                    set fname2 [string range $fname2 1 end]
-                }
+                set opt2 [regsub {^\?} $fname2 {} fname2]
                 set old_stack [dict get $ctx stack]
                 set basepath [dict get $ctx root]
                 if {[regsub {^([a-zA-Z]:)?([\\/])} $fname2 {\2} fname2] == 0} {
                     # path which doesn't start from C:\ or \ is relative
                     regexp {(.*[\\/])} $fname - basepath
                 }
-                set fname2 [abs_path $basepath {*}[split $fname2 "\\/"]]
+                set fname2 [abs_path $basepath {*}[split $fname2 {\/}]]
                 dict lappend ctx stack $fname
                 set ctx [parse_conf $ctx $fname2 $opt2]
                 dict set ctx stack $old_stack
