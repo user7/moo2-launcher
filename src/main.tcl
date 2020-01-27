@@ -1764,9 +1764,9 @@ proc parse_conf {ctx fname opt} {
                 }
                 set old_stack [dict get $ctx stack]
                 set basepath [dict get $ctx root]
-                if {[string range $fname2 0 0] eq "." &&
-                    [regexp "(.*\[\\\\/\])" $fname - dir]} {
-                    set basepath $dir
+                if {[regsub {^([a-zA-Z]:)?([\\/])} $fname2 {\2} fname2] == 0} {
+                    # path which doesn't start from C:\ or \ is relative
+                    regexp {(.*[\\/])} $fname - basepath
                 }
                 set fname2 [abs_path $basepath {*}[split $fname2 "\\/"]]
                 dict lappend ctx stack $fname
