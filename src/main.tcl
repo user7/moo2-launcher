@@ -162,6 +162,8 @@ proc detect_game_glob {base_path pattern game_sub dosbox_sub tag} {
             ]
         }
     }
+    ll "detecting locations: base=$base_path pat=$pattern gs=$game_sub ds=$dosbox_sub tag=$tag"
+    foreach f $found { ll "found: $f" }
     return $found
 }
 
@@ -202,7 +204,7 @@ proc load_settings {} {
             }
         }
     } else {
-        # else unix or macos
+        # else linux or mac os
 
         catch {set ::system_dosbox [exec which dosbox]}
 
@@ -212,7 +214,7 @@ proc load_settings {} {
             {data} \
             {dosbox dosbox} GOG]
 
-        # steam default library
+        # steam default library on linux
         set libs [list - - "$::env(HOME)/.local/share/Steam"]
 
         # steam extra libraries on linux
@@ -227,23 +229,21 @@ proc load_settings {} {
                             {data} {dosbox dosbox} Steam]
         }
 
-        # gog on snow leopard
-        lappend dt {*}[detect_game_glob \
-                        "/Applications/Master Of Orion 2.app/Contents/Resources/game/Master Of Orion 2.app/Contents" . \
-                        {Resources "Master Of Orion 2.boxer" C.harddisk} \
-                        {MacOS "Boxer Standalone"} GOG]
-
-        # steam on tiger
-        lappend dt {*}[detect_game_glob \
-                        "$::env(HOME)/Library/Application Support/Steam/steamapps/common/Master of Orion 2/Master Of Orion 2.app/Contents" . \
-                        {Resources "Master Of Orion 2.boxer" C.harddisk} \
-                        {MacOS "Boxer Standalone"} Steam]
-
-        # dosbox based gog on tiger
-        lappend dt {*}[detect_game_glob \
-                        "$::env(HOME)/Documents/Master Of Orion 2.app/Contents" . \
-                        {Resources game} \
-                        {Resources dosbox dosbox} "GOG (DOSBox)"]
+        # mac os options
+        foreach {prefix tag1} [list \
+            "/Applications/Master Of Orion 2.app/Contents/Resources/game/Master Of Orion 2.app/Contents"                       Steam \
+            "$::env(HOME)/Library/Application Support/Steam/steamapps/common/Master of Orion 2/Master Of Orion 2.app/Contents" Steam \
+            "/Applications/Master of Orion 2.app/Contents"                                                                     GOG \
+            "$::env(HOME)/Documents/Master Of Orion 2.app/Contents"                                                            GOG \
+            "$::env(HOME)/Applications/Master of Orion 2.app/Contents"                                                         GOG \
+        ] {
+            foreach {game emulator tag2} [list \
+                {Resources game}                                 {Resources dosbox dosbox}  " (DOSBox)" \
+                {Resources "Master Of Orion 2.boxer" C.harddisk} {MacOS "Boxer Standalone"} "" \
+            ] {
+                lappend dt {*}[detect_game_glob $prefix . $game $emulator "$tag1$tag2"]
+            }
+        }
     }
     if {$dt ne ""} {
         lappend dt [dict create \
