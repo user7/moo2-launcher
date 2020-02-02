@@ -1425,27 +1425,29 @@ proc os_specific_dosbox_exe {} {
         windows {
             set m m-dpath-exe-win
         }
+        Linux {
+            set m m-dpath-exe-linux
+        }
         default {
-            if {$::tcl_platform(os) eq "Linux"} {
-                set m m-dpath-exe-linux
-            } else {
-                set m m-dpath-exe-macos
-            }
+            set m m-dpath-exe-macos
         }
     }
     return [mc $m]
 }
 
 proc looks_like_dosbox_exe {fname} {
-    set exe [os_specific_dosbox_exe]
-    set exelen [string length $exe]
-    set flen [string length $fname]
-    if {$exelen <= $flen} {
-        set fsub [string range $fname [expr $flen - $exelen] end]
-        ll "exe=$exe fsub=$fsub cmp=[string compare -nocase $fsub $exe]"
-        return [expr [string compare -nocase $fsub $exe] == 0]
+    switch $::tcl_platform(platform) {
+        windows {
+            set m m-dpath-exe-win-check
+        }
+        Linux {
+            set m m-dpath-exe-linux-check
+        }
+        default {
+            set m m-dpath-exe-macos-check
+        }
     }
-    return 0
+    return [regexp [mc $m] $fname]
 }
 
 proc create_gui {} {
