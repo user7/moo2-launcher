@@ -438,7 +438,7 @@ proc quote_conf_string {str} {
     return $out
 }
 
-proc cmd_launch_moo2 {} {
+proc cmd_launch_moo2 {{run_directly 0}} {
     foreach w [dict get $::gui_dosbox wlist] {
         set spath [dict get $w spath]
         set vname [dict get $w var]
@@ -534,7 +534,12 @@ ORION150.EXE $switches
         write_file [norm_path $ct 150 ENABLE.CFG] $enable_cfg
     }
 
-    if {$have_dosbox} {
+    if $run_directly {
+        set tclpath [pwd]
+        cd [norm_path $ct]
+        exec ./ORION150.EXE &
+        cd $tclpath
+    } elseif $have_dosbox {
         exec $emulator -noconsole \
             -conf $dbc_name \
             -conf [norm_path $ct 150 dosbox.conf] \
@@ -1519,6 +1524,8 @@ proc create_gui {} {
             -command {cmd_inst_open ORION2.LOG}
         .m.actions add command -label [mc m-menu-gui-log] \
             -command cmd_toggle_log
+        .m.actions add command -label [mc m-menu-run-exe] \
+            -command {cmd_launch_moo2 1}
         menu .m.show
         .m.show add command -label DOSBox.conf \
             -command {cmd_inst_open 150 dosbox.conf}
