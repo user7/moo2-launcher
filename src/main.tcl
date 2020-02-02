@@ -238,6 +238,12 @@ proc load_settings {} {
                         "$::env(HOME)/Library/Application Support/Steam/steamapps/common/Master of Orion 2/Master Of Orion 2.app/Contents" . \
                         {Resources "Master Of Orion 2.boxer" C.harddisk} \
                         {MacOS "Boxer Standalone"} Steam]
+
+        # dosbox based gog on tiger
+        lappend dt {*}[detect_game_glob \
+                        "$::env(HOME)/Documents/Master Of Orion 2.app/Contents" . \
+                        {Resources game} \
+                        {Resources dosbox dosbox} "GOG (DOSBox)"]
     }
     if {$dt ne ""} {
         lappend dt [dict create \
