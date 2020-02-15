@@ -16,7 +16,7 @@
     m-select-moo2-inst  "Installation options"
 
     m-dpath-exe-win         "DOSBox.exe"
-    m-dpath-exe-win-check   "DOSBox.exe$"
+    m-dpath-exe-win-check   "(?i)DOSBox.exe$"
     m-dpath-exe-linux       "dosbox"
     m-dpath-exe-linux-check "dosbox$"
     m-dpath-exe-macos       "Boxer Standalone or dosbox"
