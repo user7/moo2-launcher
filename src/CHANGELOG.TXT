@@ -1,5 +1,10 @@
 MOO2 Launcher changelog.
 
+1.9
+
+    - Support for DOSBox on Mac OS (in addition to Boxer).
+    - Mac OS path auto detection improved.
+
 1.8
 
     - Added config.json to package.
