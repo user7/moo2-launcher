@@ -3,7 +3,7 @@
                               ===================
 
 This is an unofficial fan patch, it is not supported by a company or anyone at
-all, USE IT AT YOUR OWN RISK. Installation of the patch does not break your
+all. USE IT AT YOUR OWN RISK. Installation of the patch does not break your
 current MOO2 installation. No original files are overwritten. To run your old
 version (e.g. GOG or Steam), use your old shortcut and to run 1.50 use the MOO2
 Launcher shortcut created during installation.
@@ -11,7 +11,7 @@ Launcher shortcut created during installation.
 REQUIREMENTS:
 -------------
 - A working copy of MOO2 DOS version 1.31 or higher.
-- The game directory should contain ALL game files (full installation).
+- The MOO2 game directory should contain ALL game files (full installation).
 - English, French, German, Italian and Spanish languages are supported.
 
 INSTALLATION:
@@ -27,7 +27,7 @@ INSTALLATION:
    path to MOO2 game directory and path to emulator:
    a. "DOSBox.exe" on Windows
    b. "dosbox" on Linux
-   c. "Boxer Standalone" on Mac OS X
+   c. "Boxer Standalone" or "DOSBox" on Mac OS X
 
 4. Press Install.
 
@@ -36,15 +36,9 @@ INSTALLATION:
 
 TROUBLESHOOTING:
 ----------------
-If installation does not work, refer to 'Installation FAQ' section of the
+If installation does not work, refer to the 'Installation FAQ' section of the
 manual: patch/150/docs/MANUAL_150.PDF.
 
-DOCUMENTATION:
---------------
-- Changelog:         patch/CHANGELOG_150.TXT
-- Manual part I:     patch/150/docs/MANUAL_150.PDF
-- Manual part II:    patch/150/docs/MANUAL_150.XLS
-- Config parameters: patch/150/docs/PARAMETERS.CFG
-
-Find the latest version of this package at:
-http://moo2mod.com/
+UPDATES:
+--------
+Find the latest version of this package at http://moo2mod.com/
