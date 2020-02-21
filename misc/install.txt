@@ -27,7 +27,7 @@ INSTALLATION:
    path to MOO2 game directory and path to emulator:
    a. "DOSBox.exe" on Windows
    b. "dosbox" on Linux
-   c. "Boxer Standalone" or "DOSBox" on Mac OS X
+   c. "Boxer Standalone" or "dosbox" on Mac OS X
 
 4. Press Install.
 
