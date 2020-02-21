@@ -19,7 +19,7 @@ INSTALLATION:
 1. Unzip the installation package anywhere OUTSIDE of your MOO2 game directory.
 
 2. a. Windows: run install-win32.exe.
-   b. Linux: open a terminal inside unzipped directory and run ./install-linux.
+   b. Linux: run ./install-linux in terminal inside unzipped directory * **.
    c. Mac OS X: right click install-macosx and choose open.
 
 3. You will be presented with a patch installation prompt, which should auto-
@@ -33,6 +33,12 @@ INSTALLATION:
 
 5. After reporting success MOO2 Launcher will switch to normal mode, from where
    you can run the game. Choose a mod & map, then press Launch! to play.
+
+* To change directory to unzipped package do:
+  $ cd "~/Downloads/MOO2-1.50.x"
+
+** At least Ubuntu & Mint require installation of Tcl/Tk before step 2, run:
+  $ sudo apt-get install tcl tk
 
 TROUBLESHOOTING:
 ----------------
