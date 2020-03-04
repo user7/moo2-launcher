@@ -1552,7 +1552,7 @@ proc create_gui {} {
         -command [list $cmd 150 docs PARAMETERS.CFG]
     .m.help add separator
     .m.help add command -label [mc m-menu-web] \
-        -command {native_open http://www.moo2mod.com}
+        -command {native_open https://www.moo2mod.com}
     .m.help add separator
 
     if {!$inst} {
