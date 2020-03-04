@@ -2,7 +2,7 @@ MOO2 Launcher
 =============
 
 Is a Tk GUI for installing and running unofficial fan
-[patch 1.50](http://moo2mod.com) for **Master of Orion 2**.
+[patch 1.50](https://moo2mod.com) for **Master of Orion 2**.
 While you can install and run the patch manually, using Launcher has some perks:
 
 - Installator checks whether your copy of the game is recent enough.

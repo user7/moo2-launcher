@@ -47,4 +47,4 @@ manual: patch/150/docs/MANUAL_150.PDF.
 
 UPDATES:
 --------
-Find the latest version of this package at http://moo2mod.com/
+Find the latest version of this package at https://moo2mod.com/
