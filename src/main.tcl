@@ -658,7 +658,7 @@ proc create_shortcut {} {
             # unix
             if [catch {set desktop [exec xdg-user-dir DESKTOP]}] {
                 set qmool2 "\"[regsub -all "\[\"\\\$\]" \
-                                            [app_path moo2-launcher] "\\\\&"]\""
+                                            [app_path install-linux] "\\\\&"]\""
                 if {$::tcl_platform(os) eq "Linux"} {
                     # wild flavor of linux
                     set link "$::env(HOME)/Desktop/moo2 launcher"
