@@ -32,9 +32,4 @@ should be capable of running it.
 Authors
 -------
 
-Copyright (C) 2017-2020 by Alexey Svirchevsky.
-
-Contributors:
-
-Ricardo Ebbenhorst -- graphics, testing, usability suggestions.
-Darza -- proofreading.
+Copyright (C) 2017-2020 MOO2 1.50 Project.

@@ -1,6 +1,6 @@
 # This file is part of MOO2 Launcher.
 #
-# Copyright (C) 2017-2020 by Alexey Svirchevsky.
+# Copyright (C) 2017-2020 MOO2 1.50 Project.
 #
 # This program is free software distributed under the
 # terms of the GNU General Public License version 2,

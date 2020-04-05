@@ -1,6 +1,6 @@
 # This file is part of MOO2 Launcher.
 #
-# Copyright (C) 2017-2020 by Alexey Svirchevsky.
+# Copyright (C) 2017-2020 MOO2 1.50 Project.
 #
 # This program is free software distributed under the
 # terms of the GNU General Public License version 2,
@@ -93,7 +93,7 @@ server -- listen for incoming connections."
     m-menu-help-manual  "Patch Manual I-pdf"
     m-menu-help-add     "Patch Manual II-xls"
     m-about-title       "MOO2 Launcher %s"
-    m-about-text        "© 2017-2020 Alexey Svirchevsky\n\nThis program is distributed under the\nterms of the GNU General Public\nLicense version 2."
+    m-about-text        "© 2017-2020 MOO2 1.50 Project\n\nThis program is distributed under the\nterms of the GNU General Public\nLicense version 2."
     m-menu-actions      "Tools"
     m-menu-gui-log      "Debug GUI"
     m-menu-run-exe      "Run without DOSBox"
