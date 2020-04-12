@@ -1522,35 +1522,36 @@ proc create_gui {} {
             hbind .r.run cmd_help m-b-launch-help
         }
         menu .m.actions
+        .m.actions add command -label USER.CFG \
+            -command {cmd_inst_open 150 USER.CFG}
+        # show all build*.cfg files
+        menu .m.actions.build
+        foreach m {"" 1 2 3 4 5 6 7 8 9 0} {
+            .m.actions.build add command -label "BUILD$m.CFG" \
+                -command [list cmd_inst_open 150 build BUILD$m.CFG]
+        }
+        .m.actions add cascade -menu .m.actions.build -label [mc m-menu-build]
+        # show all main*.lua files
+        menu .m.actions.main-lua
+        foreach m {1 2 3 4 5 6 7 8 9 0} {
+            .m.actions.main-lua add command -label "MAIN$m.LUA" \
+                -command [list cmd_inst_open 150 scripts main MAIN$m.LUA]
+        }
+        .m.actions add cascade -menu .m.actions.main-lua -label [mc m-menu-main-lua]
+        .m.actions add separator
+        .m.actions add command -label EXTRACT.CFG \
+            -command {cmd_inst_open EXTRACT.CFG}
+        .m.actions add separator
         .m.actions add command -label [mc m-menu-mods-dir] \
             -command {cmd_inst_open 150 mods}
         .m.actions add command -label [mc m-menu-game-dir] \
             -command {cmd_inst_open}
-        .m.actions add command -label ORION2.LOG \
-            -command {cmd_inst_open ORION2.LOG}
-        .m.actions add command -label [mc m-menu-gui-log] \
-            -command cmd_toggle_log
-        .m.actions add command -label [mc m-menu-run-exe] \
-            -command {cmd_launch_moo2 1}
         menu .m.show
         .m.show add command -label DOSBox.conf \
             -command {cmd_inst_open 150 dosbox.conf}
-        .m.show add command -label USER.CFG \
-            -command {cmd_inst_open 150 USER.CFG}
-        # show build*.cfg
-        menu .m.show.build
-        foreach m {"" 1 2 3 4 5 6 7 8 9 0} {
-            .m.show.build add command -label "BUILD$m.CFG" \
-                -command [list cmd_inst_open 150 build BUILD$m.CFG]
-        }
-        .m.show add cascade -menu .m.show.build -label [mc m-menu-build]
-        # show main*.lua
-        menu .m.show.main-lua
-        foreach m {1 2 3 4 5 6 7 8 9 0} {
-            .m.show.main-lua add command -label "MAIN$m.LUA" \
-                -command [list cmd_inst_open 150 scripts main MAIN$m.LUA]
-        }
-        .m.show add cascade -menu .m.show.main-lua -label [mc m-menu-main-lua]
+        .m.show add separator
+        .m.show add command -label [mc m-menu-run-exe] \
+            -command {cmd_launch_moo2 1}
         .m add cascade -menu .m.show -label [mc m-menu-show]
         .m add cascade -menu .m.actions -label [mc m-menu-actions]
     }
@@ -1565,6 +1566,11 @@ proc create_gui {} {
         -command [list $cmd 150 docs MANUAL_150.XLS]
     .m.help add command -label "PARAMETERS.CFG" \
         -command [list $cmd 150 docs PARAMETERS.CFG]
+    .m.help add separator
+    .m.help add command -label ORION2.LOG \
+        -command {cmd_inst_open ORION2.LOG}
+    .m.help add command -label [mc m-menu-gui-log] \
+        -command cmd_toggle_log
     .m.help add separator
     .m.help add command -label [mc m-menu-web] \
         -command {native_open https://www.moo2mod.com}
