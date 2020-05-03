@@ -92,7 +92,7 @@ full screen -- полноэкранный режим.
     m-about-title       "MOO2 Launcher %s"
     m-about-text        "© 2017-2020 Алексей Свирщевский\n\nПрограмма распространяется на\nусловиях GNU General Public\nLicense version 2."
     m-menu-actions      "Игра"
-    m-menu-gui-log      "Отладка GUI"
+    m-menu-gui-log      "Отладка лаунчера"
     m-menu-irc          "Канал IRC"
     m-menu-web          "Веб-сайт"
     m-menu-show         "DOSBox"
