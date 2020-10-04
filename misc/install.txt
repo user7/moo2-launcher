@@ -48,7 +48,12 @@ INSTALLATION:
 
 TROUBLESHOOTING:
 ----------------
+?  Do I need to make a backup of my build lists before updating to new version?
+>  Your build lists are automatically backed-up during installation with MOO2
+   Launcher. They can be retrieved in directory '150-backups'.
+
 ?  MOO2 Launcher runs but fails to install with 'permission denied' error.
+?  MOO2 Launcher runs but cannot locate game files on your system.
 >  This happens if the destination is write-protected, for example for CD-rom
    version installed to Program Files. Make MOO2 directory accessible or move
    the game to an accessible location, like C:\GAMES\MOO2.
@@ -60,6 +65,8 @@ TROUBLESHOOTING:
 ?  MOO2 Launcher runs but fails to install with 'Error creating backup'.
 >  This can happen when an instance of Windows Explorer is open that has focus
    on a directory or file inside the MOO2 game directory. Close the Explorer.
+>  This can also happen if you have a previous version MOO2 Launcher still
+   running. Make sure you have that MOO2 Launcher closed before updating.
 
 ?  DOSBox crashes immediately after starting.
 >  Try setting output to 'surface'.
@@ -89,9 +96,10 @@ TROUBLESHOOTING:
    never have a true 16:9 picture, the game uses a fixed resolution and in 16:9
    everything will look stretched.
 
-?  I edited (and saved) my BUILD lists, but the original lists are still loaded.
->  You have edited the wrong files. Open the build lists from MOO2 Launcher's
-   Game>Build lists menu to make sure the correct files are edited.
+?  I'm trying to create custom BUILD lists but editing the 150\build\build*.cfg
+   files doesn't do anything. The original BUILD lists are still loaded.
+>  You have edited the wrong files. Open the BUILD lists from MOO2 Launcher's
+   menu 'Game>Build lists' to make sure the correct files are edited.
 
 UPDATES:
 --------
