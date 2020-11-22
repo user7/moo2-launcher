@@ -566,12 +566,12 @@ proc native_open {f} {
                 exec {*}[auto_execok start] "" $f &
             }
         }
-        unix {
-            exec xdg-open $f &
-        }
         default {
-            # mac
-            exec open $f &
+            if {$::tcl_platform(os) eq "Linux"} {
+                exec xdg-open $f &
+            } else {
+                exec open $f &
+            }
         }
     }
 }
@@ -1436,11 +1436,12 @@ proc os_specific_dosbox_exe {} {
         windows {
             set m m-dpath-exe-win
         }
-        Linux {
-            set m m-dpath-exe-linux
-        }
         default {
-            set m m-dpath-exe-macos
+            if {$::tcl_platform(os) eq "Linux"} {
+                set m m-dpath-exe-linux
+            } else {
+                set m m-dpath-exe-macos
+            }
         }
     }
     return [mc $m]
@@ -1451,11 +1452,12 @@ proc looks_like_dosbox_exe {fname} {
         windows {
             set m m-dpath-exe-win-check
         }
-        Linux {
-            set m m-dpath-exe-linux-check
-        }
         default {
-            set m m-dpath-exe-macos-check
+            if {$::tcl_platform(os) eq "Linux"} {
+                set m m-dpath-exe-linux-check
+            } else {
+                set m m-dpath-exe-macos-check
+            }
         }
     }
     return [regexp [mc $m] $fname]
