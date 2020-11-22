@@ -1,5 +1,12 @@
 MOO2 Launcher changelog.
 
+1.11-13
+
+    - minor spelling fixes
+    - minor menu reshuffle
+    - copyright corrected
+    - Mac OS detection fixes
+
 1.10
 
     - Fixed bug in shortcut creation for Mac *
