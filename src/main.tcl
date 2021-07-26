@@ -762,6 +762,7 @@ proc cmd_install {} {
     }
 
     set dst [abs_path $::gpath]
+    set dstlen [string length $dst]
     set src [abs_path $::package_dir]
     set dst_la [norm_path $dst launcher]
     set src_la [abs_path $::appdir]
@@ -769,7 +770,7 @@ proc cmd_install {} {
         set restore {}
 
         # if inside $dst/150 then windows will fail on move
-        if [string equal -length [string length $dst] $dst $src] {
+        if { [string equal -length $dstlen $dst $src] && [string match {[\/]} [string index $src $dstlen]] } {
             error [mc m-inst-bad-source]
         }
 

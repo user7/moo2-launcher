@@ -1,5 +1,9 @@
 MOO2 Launcher changelog.
 
+1.15
+
+    - Fixed installation bug when source directory is a prefix of destination.
+
 1.14
 
     - Minor updates in documentation and interface texts.
