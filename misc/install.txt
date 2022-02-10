@@ -16,8 +16,8 @@ REQUIREMENTS:
 - The MOO2 game directory should contain ALL game files (full installation).
 - English, French, German, Italian and Spanish languages are supported.
 
-INSTALLATION:
--------------
+INSTALLATION WITH MOO2 LAUNCHER:
+--------------------------------
 1. Unzip the installation package anywhere OUTSIDE of your MOO2 game directory.
 
 2. a. Windows: run install-win32.exe.
@@ -45,6 +45,24 @@ INSTALLATION:
 
 ** At least Ubuntu & Mint require installation of Tcl/Tk before step 2, run:
    $ sudo apt-get install tcl tk
+
+MANUAL INSTALLATION:
+--------------------
+The MOO2 Launcher runs on recent Windows, Linux and Mac OS X systems. Still it
+may happen that on your system it doesn't work. In that case you can install
+the patch manually.
+
+1. Find in the 1.50 package the directory named "patch". Copy all its files
+into your MOO2 directory. The MOO2 directory is the one that contains
+ORION2.EXE, it's location may vary depending on OS and distribution. If you
+already have a version of 1.50 installed then choose to overwrite files.
+
+2. Update your DOSBox config files to run ORION150.EXE instead of ORION2.EXE.
+
+3. Run the game and confirm that the version number in the bottom right corner
+of MOO2's Title screen is 1.50.x.
+
+Edit file 150/ENABLE.CFG manually to change enabled mods without MOO2 Launcher.
 
 TROUBLESHOOTING:
 ----------------
