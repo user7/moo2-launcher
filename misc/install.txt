@@ -1,5 +1,5 @@
                               ===================
-                               MOO2 PATCH 1.50.x
+============================== MOO2 PATCH 1.50.x ===============================
                               ===================
 
 This is an unofficial fan patch for Master of Orion II: Battle at Antares.
@@ -10,26 +10,28 @@ original files are overwritten. To run your old version (e.g. GOG or Steam),
 use your old shortcut and to run 1.50 use the MOO2 Launcher shortcut created
 during installation.
 
-REQUIREMENTS:
--------------
-- A working copy of MOO2 DOS version 1.31 or higher.
-- The MOO2 game directory should contain ALL game files (full installation).
-- English, French, German, Italian and Spanish languages are supported.
+                                 --------------
+--------------------------------- REQUIREMENTS ---------------------------------
+                                 --------------
+1. A working copy of MOO2 DOS version 1.31 or higher.
+2. The MOO2 game directory should contain ALL game files (full installation).
+3. English, French, German, Italian and Spanish languages are supported.
 
-INSTALLATION WITH MOO2 LAUNCHER:
---------------------------------
+                       ---------------------------------
+----------------------- INSTALLATION WITH MOO2 LAUNCHER ------------------------
+                       ---------------------------------
 1. Unzip the installation package anywhere OUTSIDE of your MOO2 game directory.
 
-2. a. Windows: run install-win32.exe.
-   b. Linux: run ./install-linux in terminal inside unzipped directory. * **
+2. a. Windows:  run install-win32.exe.
+   b. Linux:    run ./install-linux in terminal inside unzipped directory. * **
    c. Mac OS X: right click install-macosx and choose open. ^
 
 3. You will be presented with a patch installation prompt, which should auto-
    detect GOG and Steam distros. If there was no auto-detection, then specify
    path to MOO2 game directory and path to emulator:
-   a. "DOSBox.exe" on Windows
-   b. "dosbox" on Linux
-   c. "Boxer Standalone" or "dosbox" on Mac OS X
+   a. Windows:  "DOSBox.exe"
+   b. Linux:    "dosbox"
+   c. Mac OS X: "Boxer Standalone" or "dosbox"
 
 4. Press Install.
 
@@ -40,36 +42,39 @@ INSTALLATION WITH MOO2 LAUNCHER:
    the game to start right away. To start MOO2 1.50, use the desktop shortcut
    created during installation.
 
-*  To change directory to unzipped package do:
-   $ cd "~/Downloads/MOO2-1.50.x"
+   *  To change directory to unzipped package do:
+      $ cd "~/Downloads/MOO2-1.50.x"
 
-** At least Ubuntu & Mint require installation of Tcl/Tk before step 2, run:
-   $ sudo apt-get install tcl tk
+   ** At least Ubuntu & Mint require installation of Tcl/Tk before step 2, run:
+      $ sudo apt-get install tcl tk
 
-^  Tested on Mac OS X Snow Leopard. MOO2 Launcher might not work properly on
-   newer Mac OS versions. In such case, manual install without MOO2 Launcher
-   is still possible.
+   ^  Tested on Mac OS X Snow Leopard. MOO2 Launcher might not work properly on
+      newer Mac OS versions. In such case, manual install without MOO2 Launcher
+      is still possible.
 
-MANUAL INSTALLATION:
---------------------
-The MOO2 Launcher runs on recent Windows, Linux and Mac OS X systems. Still it
-may happen that on your system it doesn't work. In that case you can install
-the patch manually.
+                             ---------------------
+----------------------------- MANUAL INSTALLATION ------------------------------
+                             ---------------------
+MOO2 Launcher runs on recent Windows, Linux and Mac OS X systems. Still it may
+happen that on your system it doesn't work. In that case you can install the
+patch manually.
 
-1. Find in the 1.50 package the directory named "patch". Copy all its files
-into your MOO2 directory. The MOO2 directory is the one that contains
-ORION2.EXE, it's location may vary depending on OS and distribution. If you
-already have a version of 1.50 installed then choose to overwrite files.
+1. Find in the 1.50 package the directory named "patch". Copy all its contents
+   into your MOO2 directory. (So not "patch" itself, but what's inside.)
+   The MOO2 directory is the one that contains ORION2.EXE, it's location may
+   vary depending on OS and distribution. If you already have a version of 1.50
+   installed then choose to overwrite files.
 
 2. Update your DOSBox config files to run ORION150.EXE instead of ORION2.EXE.
 
 3. Run the game and confirm that the version number in the bottom right corner
-of MOO2's Title screen is 1.50.x.
+   of MOO2's Title screen is 1.50.x.
 
-Edit file 150/ENABLE.CFG manually to change enabled mods without MOO2 Launcher.
+4. Edit file 150/ENABLE.CFG manually to change enabled mods.
 
-TROUBLESHOOTING:
-----------------
+                               -----------------
+------------------------------- TROUBLESHOOTING --------------------------------
+                               -----------------
 ?  Do I need to make a backup of my build lists before updating to new version?
 
      Your build lists are automatically backed-up during installation with
@@ -95,24 +100,32 @@ TROUBLESHOOTING:
      This can also happen if you have a previous version MOO2 Launcher still
      running. Make sure you have that MOO2 Launcher closed before updating.
 
+?  On OS X, MOO2 Launcher shows a black panel and no installation options show.
+
+     The Tsch based menu has a black background, causing MOO2 Launcher to show
+     black only. MOO2 Launcher is actually functional, and should you have all
+     its fields memorized and skillfully TAB through all fields, you can still
+     install the game. There is currently no real solution for this issue.
+     Install the patch manually.
+
 ?  DOSBox crashes immediately after starting.
 
      Try setting output to 'surface'.
 
 ?  Game doesn't start, cannot find info.lbx, credits.lbx and diplomse.lbx.
 
-     This happens when the game is installed from an original CD-rom.
-     To fix it, copy all files from CD-rom to e.g. C:\GAMES\MOO2, remove the
-     read-only attribute from all files, then install patch 1.31, then install
-     patch 1.50. The order of actions is important, install 1.31 after copying
-     the cd-rom files.
+     This happens when the game is installed from an original CD-rom, which by
+     default does not copy all game files to disk. To fix it, copy all files
+     from CD-rom to e.g. C:\GAMES\MOO2, remove the read-only attribute from all
+     files, then install patch 1.31, then install patch 1.50. The order of
+     actions is important, install 1.31 after copying the cd-rom files.
 
 ?  Game doesn't start, cannot find techname.lbx.
 
      This happens with manual install if the MOO2 game is not correctly mounted
      in DOSBox. To fix it, mount to the MOO2 directory root in your .conf file,
-     eg 'mount C "C:\GAMES\MOO2" instead of for example mount C "C:\GAMES". (In
-     latter case you'd also need cd MOO2.)
+     eg: mount C "C:\GAMES\MOO2" instead of for example: mount C "C:\GAMES".
+     (In latter case you'd also need: cd MOO2.)
 
 ?  Music plays, but no sound effects.
 
@@ -143,6 +156,15 @@ TROUBLESHOOTING:
      You have edited the wrong files. Open the BUILD lists from MOO2 Launcher's
      menu 'Game>Build lists' to make sure the correct files are edited.
 
-UPDATES:
---------
+?  I'm hosting multiplayer game, but get black screen after race selection.
+
+     Make sure everyone runs MOO2 Launcher as administrator.
+     
+?  Trying to join a multiplayer game, but cannot find the game.
+
+     Try running MOO2 Launcher as administrator.
+
+                                   ---------
+----------------------------------- UPDATES ------------------------------------
+                                   ---------
 Find the latest version of this package at https://moo2mod.com/
