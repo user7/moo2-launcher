@@ -1566,7 +1566,7 @@ proc create_gui {} {
     .m.help add command -label [mc m-menu-help-manual] \
         -command [list $cmd 150 docs MANUAL_150.PDF]
     .m.help add command -label [mc m-menu-help-add] \
-        -command [list $cmd 150 docs MANUAL_150.XLS]
+        -command [list $cmd 150 docs MANUAL_150.xlsx]
     .m.help add command -label "PARAMETERS.CFG" \
         -command [list $cmd 150 docs PARAMETERS.CFG]
     .m.help add separator
