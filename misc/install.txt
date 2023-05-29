@@ -159,7 +159,7 @@ patch manually.
 ?  I'm hosting multiplayer game, but get black screen after race selection.
 
      Make sure everyone runs MOO2 Launcher as administrator.
-     
+
 ?  Trying to join a multiplayer game, but cannot find the game.
 
      Try running MOO2 Launcher as administrator.
