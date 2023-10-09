@@ -1,177 +1,187 @@
+===============================================================================
+---                                                                         ---
+---                  MASTER OF ORION II: BATTLE AT ANTARES                  ---
+---                                                                         ---
+---                            DOS VERSION 1.50                             ---
+---                                                                         ---
+---                         INSTALLATION HELP FILE                          ---
+---                                                                         ---
+===============================================================================
 
-                --------===={[ MOO2 PATCH 1.50.x ]}====--------
+INTRODUCTION
 
-This is an unofficial fan patch for Master of Orion II: Battle at Antares.
-It is not supported by a company or anyone at all. USE IT AT YOUR OWN RISK.
+    This is an unofficial fan patch for Master of Orion II: Battle at Antares.
+    It is not supported by a company or anyone at all. USE IT AT YOUR OWN RISK.
 
-Installation of the patch does not break your current MOO2 installation. No
-original files are overwritten. To run your old version (e.g. GOG or Steam),
-use your old shortcut and to run 1.50 use the MOO2 Launcher shortcut created
-during installation.
+    Installation of the patch does not break your current MOO2 installation. No
+    original files are overwritten. To run your old version (e.g. GOG or Steam)
+    use your old shortcut (it will not be deleted) and to run 1.50 use the MOO2
+    Launcher shortcut created during installation.
 
-                                 --------------
---------------------------------- REQUIREMENTS ---------------------------------
-                                 --------------
+REQUIREMENTS
 
-1. A working copy of MOO2 DOS version 1.31 or higher.
-2. MOO2 game directory MUST contain ALL game files (full installation).
-3. English, French, German, Italian and Spanish languages are supported.
+    1. A working copy of MOO2 DOS version 1.31 or higher.
+    2. MOO2 game directory MUST contain ALL game files (full installation).
+    3. English, French, German, Italian and Spanish languages are supported.
 
-                       ---------------------------------
------------------------ INSTALLATION WITH MOO2 LAUNCHER ------------------------
-                       ---------------------------------
+INSTALLATION WITH MOO2 LAUNCHER
 
-1. Unzip the installation package anywhere OUTSIDE of your MOO2 game directory.
+    1. Unzip installation package anywhere OUTSIDE of your MOO2 game directory.
 
-2. a. Windows:  run install-win32.exe.
-   b. Linux:    run ./install-linux in terminal inside unzipped directory. * **
-   c. Mac OS X: right click install-macosx and choose open. ^
+    2. a. Windows:  run install-win32.exe.
+       b. Linux:    run ./install-linux in terminal inside
+                    unzipped directory. * **
+       c. Mac OS X: right click install-macosx and choose open. ^
 
-3. You will be presented with a patch installation prompt, which should auto-
-   detect GOG and Steam distros. If there was no auto-detection, then specify
-   path to MOO2 game directory and path to emulator:
-   a. Windows:  "DOSBox.exe"
-   b. Linux:    "dosbox"
-   c. Mac OS X: "Boxer Standalone" or "dosbox"
+    3. You will be presented with a patch installation prompt, which should
+       auto-detect GOG and Steam distros. If there was no auto-detection, then
+       specify path to MOO2 game directory and path to emulator:
+       a. Windows:  "DOSBox.exe"
+       b. Linux:    "dosbox"
+       c. Mac OS X: "Boxer Standalone" or "dosbox"
 
-4. Press Install.
+    4. Press Install.
 
-5. After reporting success MOO2 Launcher will switch to normal mode, from where
-   you can run the game. Choose a mod & map, then press Launch! to play.
+    5. After reporting success MOO2 Launcher will switch to normal mode, from
+       where you can run the game. Choose your mod & map, then press Launch!
 
-6. On subsequent runs the MOO2 Launcher won't prompt installation, and allows
-   the game to start right away. To start MOO2 1.50, use the desktop shortcut
-   created during installation.
+    6. On subsequent runs MOO2 Launcher won't prompt installation and allows
+       the game to start right away. To start MOO2 Launcher, use the desktop
+       shortcut created during installation.
 
-   *  To change directory to unzipped package do:
-      $ cd "~/Downloads/MOO2-1.50.x"
+       *  To change directory to unzipped package do:
+          $ cd "~/Downloads/MOO2-1.50.x"
 
-   ** At least Ubuntu & Mint require installation of Tcl/Tk before step 2, run:
-      $ sudo apt-get install tcl tk
+       ** At least Ubuntu & Mint require installation of Tcl/Tk before step 2,
+          run: $ sudo apt-get install tcl tk
 
-   ^  Tested on Mac OS X Snow Leopard. MOO2 Launcher might not work properly on
-      newer Mac OS versions. In such case, manual install without MOO2 Launcher
-      is still possible.
+       ^  Tested on Mac OS X Snow Leopard. MOO2 Launcher may not work properly
+          on newer Mac OS versions. In such case, manual install without MOO2
+          Launcher is still possible.
 
-                             ---------------------
------------------------------ MANUAL INSTALLATION ------------------------------
-                             ---------------------
+MANUAL INSTALLATION
 
-MOO2 Launcher runs on recent Windows, Linux and Mac OS X systems. Still it may
-happen that on your system it doesn't work. In that case you can install the
-patch manually.
+    MOO2 Launcher runs on recent Windows, Linux and Mac OS X systems. However,
+    it may happen that on your system it doesn't work. In that case you can
+    still install the patch manually.
 
-1. Find in the 1.50 package the directory named "patch". Copy all its contents
-   into your MOO2 directory. (So not "patch" itself, but what's inside.)
-   The MOO2 directory is the one that contains ORION2.EXE, it's location may
-   vary depending on OS and distribution. If you already have a version of 1.50
-   installed then choose to overwrite files.
+    1. Find in the 1.50 package the directory named "patch". Copy all its
+       contents into your MOO2 directory. (So not "patch" itself, but what's
+       inside.) The MOO2 directory is the one that contains ORION2.EXE, its
+       location may vary depending on OS and distribution. If you already have
+       a version of 1.50 installed then choose to overwrite files.
 
-2. Update your DOSBox .conf file to run ORION150.EXE instead of ORION2.EXE and
-   make sure to MOUNT to the MOO2 directory ROOT.
+    2. Update your DOSBox .conf file to run ORION150.EXE instead of ORION2.EXE
+       and make sure to MOUNT to the MOO2 directory ROOT.
 
-3. Run the game and confirm that the version number in the bottom right corner
-   of MOO2's Title screen is 1.50.x.
+    3. Run the game and confirm that the version number in the bottom right
+       corner of MOO2's Title screen is 1.50.x.
 
-4. Edit file 150/ENABLE.CFG manually to change enabled mods.
+    4. Edit file 150/ENABLE.CFG manually to change enabled mods.
 
-                               -----------------
-------------------------------- TROUBLESHOOTING --------------------------------
-                               -----------------
+TROUBLESHOOTING
 
-Q  Do I need to make a backup of my build lists before updating to new version?
+    Q: Do I need to make a backup of my build lists before updating to a new
+       version of the patch?
 
-     Your build lists are automatically backed-up during installation with
-     MOO2 Launcher. They can be retrieved in directory '150-backups'.
+         Your build lists are automatically backed-up during installation with
+         MOO2 Launcher. They can be retrieved in directory '150-backups'.
 
-Q  MOO2 Launcher runs but fails to install with 'permission denied' error.
-Q  MOO2 Launcher runs but cannot locate game files on your system.
+    Q: MOO2 Launcher runs but fails to install with 'permission denied' error.
+    Q: MOO2 Launcher runs but cannot locate game files on your system.
 
-     This happens if the destination is write-protected, for example for the
-     CD-rom version installed to Program Files. Make MOO2 directory accessible
-     or move the game to an accessible location, like C:\GAMES\MOO2.
+         This happens if the destination is write-protected, for example for
+         the CD-rom version installed to Program Files in Windows. Make MOO2
+         directory accessible or move the game to an accessible location, like
+         C:\GAMES\MOO2.
 
-     In some cases you can workaround the issue by running MOO2 Launcher as an
-     administrator, but you'll have to do it every time you run it, so that's
-     not recommended. This problem doesn't affect Steam and GOG packages even
-     though Steam installs to Program Files.
+         In some cases you can workaround the issue by running MOO2 Launcher as
+         an administrator, but you'll have to do it every time you run it, so
+         that's not recommended. This problem doesn't affect Steam and GOG
+         packages even though Steam installs to Program Files.
 
-Q  MOO2 Launcher runs but fails to install with 'Error creating backup'.
+    Q: MOO2 Launcher runs but fails to install with 'Error creating backup'.
 
-     This can happen if an instance of Windows Explorer is open that has focus
-     on a directory or file inside the MOO2 game directory. Close the Explorer.
+         This can happen if an instance of Windows Explorer is open that has
+         focus on a directory or file inside the MOO2 game directory. Close
+         Windows Explorer.
 
-     This can also happen if you have a previous version MOO2 Launcher still
-     running. Make sure you have that MOO2 Launcher closed before updating.
+         It can also happen if you have a previous version MOO2 Launcher still
+         running. Make sure you have that MOO2 Launcher closed before updating.
 
-Q  On OS X, MOO2 Launcher shows a black panel and no installation options show.
+    Q: On OS X, MOO2 Launcher panel is black and no installation options show.
 
-     The Tsch based menu has a black background, causing MOO2 Launcher to show
-     black only. MOO2 Launcher is actually functional, and should you have all
-     its fields memorized and skillfully TAB through all fields, you can still
-     install the game. There is currently no real solution for this issue.
-     Install the patch manually.
+         The Tsch based menu has a black background, causing MOO2 Launcher to
+         show black only. MOO2 Launcher is actually functional, and should you
+         have all its fields memorized and skillfully TAB through all fields,
+         you can still install the game. There is currently no real solution
+         for this issue. Install the patch manually.
 
-Q  DOSBox crashes immediately after starting.
+    Q: DOSBox crashes immediately after starting.
 
-     Try setting output to 'surface'.
+         Try setting output to 'surface'.
 
-Q  Game doesn't start, cannot find info.lbx, credits.lbx and diplomse.lbx.
+    Q: Game doesn't start, cannot find info.lbx, credits.lbx and diplomse.lbx.
 
-     This happens when the game is installed from an original CD-rom, which by
-     default does not copy all game files to disk. To fix it, copy all files
-     from CD-rom to e.g. C:\GAMES\MOO2, remove the read-only attribute from all
-     files, then install patch 1.31, then install patch 1.50. The order of
-     actions is important, install 1.31 after copying the cd-rom files.
+         This happens when the game is installed from an original CD-rom, which
+         by default does not copy all game files to disk. To fix it, copy all
+         files from CD-rom to your MOO2 game directory (e.g. C:\GAMES\MOO2).
+         Then remove the read-only attribute from all files, then install patch
+         1.31, then install patch 1.50. The order of actions is important:
+         Install patch 1.31 after copying the cd-rom files.
 
-Q  Game doesn't start, cannot find techname.lbx.
+    Q: Game doesn't start, cannot find techname.lbx.
 
-     This happens with manual install if the MOO2 game is not correctly mounted
-     in DOSBox. To fix it, mount to the MOO2 directory root in your .conf file,
-     eg: mount C "C:\GAMES\MOO2" instead of mount C "C:\GAMES".
-     (In latter case you'd also need: cd MOO2, which should be avoided.)
+         This happens with manual install if the MOO2 game is not correctly
+         mounted in DOSBox. To fix it, mount to the MOO2 directory root in your
+         DOSBox .conf file, for example: mount C "C:\GAMES\MOO2" instead of
+         mount C "C:\GAMES".
+         (In latter case you'd also need: cd MOO2, which should be avoided.)
 
-Q  Music plays, but no sound effects.
+    Q: Music plays, but no sound effects.
 
-     You need to make the file sound.lbx writable. On Windows right-click it,
-     choose properties, remove read-only checkbox.
+         You need to make the file sound.lbx writable. On Windows right-click
+         the file, choose properties, remove read-only checkbox.
 
-Q  Game interface lags, sound is crackling.
+    Q: Game interface lags, sound is crackling.
 
-     May happen on Ubuntu with opengl output. Try 'overlay'.
+         May happen on Ubuntu with opengl output. Try 'overlay'.
 
-Q  How to edit DOSBox options not accessible via MOO2 Launcher?
+    Q: How to edit DOSBox options not accessible via MOO2 Launcher?
 
-     Edit file 150/dosbox.conf in the game directory. Note that the settings in
-     this file override MOO2 Launcher settings, so if you e.g. force resolution
-     there, changing it in MOO2 Launcher will no longer work.
+         Edit file 150/dosbox.conf in the game directory. Note that settings in
+         this file override MOO2 Launcher settings, for example if you force
+         resolution there, changing it in MOO2 Launcher will no longer work.
 
-Q  I want the game to run in 16:9 mode.
+    Q: I want the game to run in 16:9 mode.
 
-     The game was designed for 4:3 monitors. In DOSBox windowed mode you can
-     only have that. In full screen your monitor handles whether to stretch to
-     maximum resolution, explore its OSD to figure out how to do it. Note that
-     you will never have a true 16:9 picture, the game uses a fixed resolution
-     and in 16:9 everything will look stretched.
+         The game was designed for 4:3 monitors. In DOSBox windowed mode you
+         can only have that. In full screen your monitor handles whether to
+         stretch to maximum resolution, explore its OSD to figure out how to do
+         it. Note that you will never have a true 16:9 picture, the game uses a
+         fixed resolution and in 16:9 everything will look stretched.
 
-Q  I'm trying to create custom BUILD lists but editing the 150\build\build*.cfg
-   files doesn't do anything. The original BUILD lists are still loaded.
+    Q: I'm trying to create custom BUILD lists but editing the files doesn't do
+       anything. The original BUILD lists are still loaded.
 
-     You have edited the wrong files. Open the BUILD lists from MOO2 Launcher's
-     menu 'Game>Build lists' to make sure the correct files are edited.
+         You have edited the wrong files. Open the BUILD lists from the menu in
+         MOO2 Launcher: 'Game>Build lists' so to make sure the correct files
+         are edited.
 
-Q  I'm hosting multiplayer game, but get black screen after race selection.
+    Q: I'm hosting multiplayer game, but get black screen after race selection.
 
-     Make sure everyone runs MOO2 Launcher as administrator.
+         Make sure everyone runs MOO2 Launcher as administrator.
 
-Q  Trying to join a multiplayer game, but cannot find the game.
+    Q: Trying to join a multiplayer game, but cannot find the game.
 
-     Try running MOO2 Launcher as administrator.
+         Try running MOO2 Launcher as administrator.
 
-                                   ---------
------------------------------------ UPDATES ------------------------------------
-                                   ---------
+    Q: Why can't I design ships?
 
-Find the latest version of this package at https://moo2mod.com/
+         Select the "Tactical Combat" option when you start a new game.
 
----------------------------------------][---------------------------------------
+UPDATES
+
+    Find the latest version of this package at https://moo2mod.com/
+
+====================================[ END ]====================================
