@@ -802,6 +802,7 @@ proc cmd_install {} {
             if {$dst_la ne $src_la} {
                 file delete -force $dst_la
                 file copy -force $src_la $dst_la
+                file delete -force [norm_path $dst_la patch]
             }
         } err_copy] {
             error [mc m-inst-copy-failed $err_copy]

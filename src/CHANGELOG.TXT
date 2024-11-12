@@ -1,5 +1,9 @@
 MOO2 Launcher changelog.
 
+1.17
+
+    - Confusing launcher/patch folder is removed upon installation.
+
 1.15
 
     - Fixed installation bug when source directory is a prefix of destination.
