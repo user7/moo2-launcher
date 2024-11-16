@@ -115,7 +115,7 @@ proc start {} {
 }
 
 proc col_width_label {} {
-    return { -width 20 -wraplength 123 }
+    return { -width 21 -wraplength 124 }
 }
 
 proc col_width_data {} {
